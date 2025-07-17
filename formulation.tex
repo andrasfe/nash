@@ -1,0 +1,19 @@
+\subsection{Example: Single-Deviator Nash Equilibrium}
+
+\textbf{Notation:} $n$ (IG count, e.g., $n=1000$), $n_H$ (active H count, e.g., $n_H=100$ out of 500 eligible, with $n_H \geq 3f+1$ for Byzantine tolerance), $k$ (Hs selected per round, e.g., $k=5$), $r$ (reputation, $+1$ increment per correct round), $\alpha \in \{\text{hon}, \text{mal}\}$ (honest/malicious), $R_{IG}=0.00048$ (IG reward), $R_H=0.16$ (H reward), $C_{IG}^{\text{hon}}=0.0004$, $C_{IG}^{\text{mal}}=0.0002$ (IG costs), $C_H^{\text{hon}}=0.04$, $C_H^{\text{mal}}=0.008$ (H costs), $S_{IG},S_H$ (stakes), $p=0.02$ (false‑negative rate), $\pi_H=k/n_H$ (selection probability, e.g., $0.05$ for $k=5, n_H=100$), $U_{IG},U_H$ (utilities), $\mathbf{1}_{\{\cdot\}}$ (indicator: 1 if true, 0 otherwise), $\tau$ (expected time to H), $V_{\text{rep}}$ (reputation as implicit security).
+
+\textbf{Model:}
+\[
+\begin{aligned}
+U_{IG}(\alpha) &= R_{IG}-C_{IG}^{\alpha} \\ 
+               &\quad -\mathbf{1}_{\{\alpha=\mathrm{mal}\}}\,(1-p)\bigl(R_{IG}+S_{IG}\bigr), \\[6pt]
+U_H(\alpha_H)  &= U_{IG}(\mathrm{hon}) + \pi_H R_H - C_H^{\alpha_H} \\ 
+               &\quad -\mathbf{1}_{\{\alpha_H=\mathrm{mal}\}}\,(1-p)\bigl(R_H+S_H\bigr).
+\end{aligned}
+\]
+
+\textbf{Nash Conditions:} For $p=0.02$, minimum Nash: $S_{IG} \geq \tfrac{0.0004 - 0.0002}{1-0.02} - 0.00048 \approx -0.000276$, $S_H \geq \tfrac{0.04 - 0.008}{1-0.02} - 0.16 \approx -0.127$. Note: Both reward and penalty are conditional on selection, so $\pi_H$ cancels out. Actual stakes use time‑based commitment: $S_{IG} = 4.84$ (7 days rewards), $S_H = 161.28$ (14 days expected rewards). IGs earn 20\% margin, Hs earn 300\% margin (only 5\% chance per round). Daily network cost: \$1{,}843. \textbf{Nash equilibrium achieved:} $S_{IG} = 4.84 \gg -0.000276$ and $S_H = 161.28 \gg -0.127$.
+
+\textbf{Limitations:} (1) Single-deviator only—coalitions ($m$) raise effective $p$ to $1-(1-p)^m$. (2) Fixed $p$—should use $p_{\max}$ for adaptive attacks. (3) No discounting—$\delta<1$ favors immediate gains. (4) $S_{IG}=0$ means no collusion margin; need $S_{IG}>\epsilon$. (5) Sunk reputation—real deterrent is lost future rewards. (6) Growing $n_H$ shrinks $\pi_H$, so stakes must scale. (7) Capped stakes ($S_H\le 1000$) may reduce security for larger networks. (8) Purely rational‑agent assumption—actors with outside motives may still cheat.
+
+\textbf{Extension:} System is Byzantine resilient for $n \geq 3f+1$; coalition‑proof Nash equilibrium requires stronger (coalition‑aware) bounds.
