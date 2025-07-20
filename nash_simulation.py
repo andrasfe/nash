@@ -28,141 +28,6 @@ from game_rules_prompt import (
 load_dotenv()
 
 
-def calculate_nash_parameters(n_total: int) -> Dict:
-    """
-    Calculate Nash equilibrium parameters for given number of participants
-    """
-    # Determine validator/IG split (25% validators, 75% IGs)
-    n_H = max(3, int(n_total * 0.25))  # At least 3 validators
-    n_IG = n_total - n_H
-    
-    # Base parameters from formulation.tex
-    c_IG_hon = 0.00002  # IG honest cost
-    c_IG_mal = 0.00005  # IG malicious cost
-    c_H_hon = 0.00002   # H honest cost
-    c_H_mal = 0.00005   # H malicious cost
-    b_H = 0.1           # H base reward
-    k = 0.95            # IG honest probability
-    alpha = 0.02        # False negative rate
-    S_IG = 0.004835     # IG stake
-    S_H = 0.16128       # H stake
-    
-    # Calculate selection probabilities
-    pi_H = n_H / n_total
-    pi_IG = n_IG / n_total
-    
-    # Base profits
-    E_U_IG_hon = 0.00008  # From formulation.tex
-    E_U_H_hon_base = b_H * pi_H - c_H_hon
-    
-    # Profit ratio
-    profit_ratio = E_U_H_hon_base / E_U_IG_hon
-    
-    print(f"\n=== NASH EQUILIBRIUM CALCULATION ===")
-    print(f"Total participants: n = {n_total}")
-    print(f"Validators: n_H = {n_H} ({pi_H*100:.1f}%)")
-    print(f"Insight Generators: n_IG = {n_IG} ({pi_IG*100:.1f}%)")
-    print(f"Base profit differential: {profit_ratio:.0f}x")
-    
-    # Adjust solution parameters based on scale
-    if n_total <= 20:
-        # Small scale: Need stronger incentives
-        IG_multiplier = 80 - (n_total - 12) * 2  # 80x at n=12, decreases with size
-        min_IG_quota = 0.35 - (n_total - 12) * 0.01  # 35% at n=12
-        H_bonus = 0.005
-        reputation_impact = 0.15
-        target_IG_rounds_to_promote = 15
-        h_selection_prob = 0.8
-    elif n_total <= 50:
-        # Medium scale
-        IG_multiplier = 60 - (n_total - 20) * 0.67  # Interpolate to 40x at n=50
-        min_IG_quota = 0.30 - (n_total - 20) * 0.0017  # Interpolate to 25% at n=50
-        H_bonus = 0.004
-        reputation_impact = 0.12
-        target_IG_rounds_to_promote = 20
-        h_selection_prob = 0.7
-    else:
-        # Large scale: More natural dynamics
-        IG_multiplier = max(30, 40 - (n_total - 50) * 0.1)  # Decreases slowly, floor at 30x
-        min_IG_quota = max(0.20, 0.25 - (n_total - 50) * 0.001)  # Floor at 20%
-        H_bonus = 0.003
-        reputation_impact = 0.10
-        target_IG_rounds_to_promote = 25 + (n_total - 100) * 0.05  # Increases slowly
-        h_selection_prob = 0.6
-    
-    # Ensure values are in reasonable ranges
-    IG_multiplier = max(30, min(100, IG_multiplier))
-    min_IG_quota = max(0.20, min(0.40, min_IG_quota))
-    target_IG_rounds_to_promote = int(max(10, min(50, target_IG_rounds_to_promote)))
-    
-    # Calculate reputation parameters
-    reputation_per_round = 1
-    R = target_IG_rounds_to_promote * reputation_per_round
-    
-    # Calculate X (max rounds as H) based on desired turnover
-    if n_total <= 20:
-        promotions_per_round = 1/5  # Faster turnover for small scale
-    else:
-        promotions_per_round = n_H / (n_total * 0.1)  # ~10% of total get promoted per round
-    
-    X = int(n_H / promotions_per_round)
-    X = max(10, min(X, n_total))  # Reasonable bounds
-    
-    # Validator profit with solution
-    validator_profit_with_solution = (
-        (1 - min_IG_quota) * E_U_H_hon_base +
-        min_IG_quota * IG_multiplier * E_U_IG_hon +
-        H_bonus
-    )
-    
-    print(f"\n=== TWO-TIER INCENTIVE SOLUTION ===")
-    print(f"IG work multiplier: {IG_multiplier}x")
-    print(f"Minimum IG quota: {min_IG_quota*100:.0f}%")
-    print(f"H performance bonus: ${H_bonus:.3f}")
-    print(f"Validator profit: ${validator_profit_with_solution:.5f} ({validator_profit_with_solution/E_U_H_hon_base*100:.0f}% of base)")
-    print(f"Promotion after {R} reputation, max {X} rounds as validator")
-    
-    return {
-        "n_total": n_total,
-        "n_h_initial": n_H,
-        "n_ig_initial": n_IG,
-        
-        # Stakes
-        "stake_ig": S_IG,
-        "stake_h": S_H,
-        "initial_balance": 0.5,
-        
-        # Costs
-        "ig_cost_honest": c_IG_hon,
-        "ig_cost_malicious": c_IG_mal,
-        "h_cost_honest": c_H_hon,
-        "h_cost_malicious": c_H_mal,
-        
-        # Rewards
-        "h_reward": b_H,
-        "h_selection_prob": h_selection_prob,
-        
-        # Solution parameters
-        "ig_multiplier": IG_multiplier,
-        "min_ig_quota": min_IG_quota,
-        "h_bonus": H_bonus,
-        "reputation_impact": reputation_impact,
-        
-        # Reputation system
-        "reputation_reward": reputation_per_round,
-        "R": R,
-        "X": X,
-        
-        # Detection
-        "false_negative_rate": alpha,
-        
-        # Profit expectations
-        "expected_ig_profit": E_U_IG_hon,
-        "expected_h_profit_base": E_U_H_hon_base,
-        "profit_ratio": profit_ratio,
-        "expected_h_profit_with_solution": validator_profit_with_solution
-    }
-
 
 def get_current_rankings(candidates, randomize=False):
     """Generate rankings for candidates"""
@@ -786,53 +651,29 @@ class NashSimulation:
 
 async def main():
     parser = argparse.ArgumentParser(description='Nash Equilibrium Voting Simulation')
-    parser.add_argument('participants', type=int, nargs='?', help='Total number of participants')
-    parser.add_argument('--config', type=str, help='Configuration JSON file')
-    parser.add_argument('--rounds', type=int, default=50, help='Number of rounds to simulate (default: 50)')
+    parser.add_argument('--config', type=str, required=True, help='Configuration JSON file (use nash_formulation.py to generate)')
     parser.add_argument('--no-llm', action='store_true', help='Run without LLM (faster simulation)')
     parser.add_argument('--output', type=str, help='Output file for results (default: nash_results_N.json)')
     
     args = parser.parse_args()
     
-    # Load parameters from config or calculate them
-    if args.config:
-        # Load from config file
-        with open(args.config, 'r') as f:
-            params = json.load(f)
-        print(f"Loaded configuration from {args.config}")
-        
-        # Override rounds if specified in config
-        if 'num_rounds' in params and args.rounds == 50:
-            args.rounds = params['num_rounds']
-    else:
-        # Need participant count
-        if not args.participants:
-            parser.error("Either provide participant count or --config file")
-        
-        # Validate participant count
-        if args.participants < 6:
-            print("Error: Need at least 6 participants (minimum 3 validators)")
-            return
-        
-        # Calculate parameters
-        params = calculate_nash_parameters(args.participants)
+    # Load from config file
+    with open(args.config, 'r') as f:
+        params = json.load(f)
+    print(f"Loaded configuration from {args.config}")
     
-    # Save parameters (only if calculated, not if loaded from config)
-    if not args.config:
-        param_file = f'simulation_params_{args.participants}.json'
-        with open(param_file, 'w') as f:
-            json.dump(params, f, indent=2)
-        print(f"\nParameters saved to {param_file}")
+    # Get rounds from config
+    rounds = params.get('num_rounds', 100)
     
     # Run simulation
     sim = NashSimulation(params, use_llm=not args.no_llm)
-    results = await sim.run_simulation(args.rounds)
+    results = await sim.run_simulation(rounds)
     
     # Save results
     if args.output:
         output_file = args.output
     else:
-        n_total = params.get('n_total', args.participants)
+        n_total = params.get('n_total', 100)
         output_file = f'nash_results_{n_total}.json'
     with open(output_file, 'w') as f:
         json.dump(results, f, indent=2)

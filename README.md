@@ -120,14 +120,17 @@ Our solution implements:
 ## Quick Start
 
 ```bash
-# Generate Nash equilibrium configuration
+# Step 1: Generate Nash equilibrium configuration
 python nash_formulation.py 100 100  # Creates simulation_params_n100.json
 
-# Run simulation with AI agents
+# Step 2: Run simulation with AI agents (config file required)
 python nash_simulation.py --config simulation_params_n100.json
 
-# Run without LLM for faster testing
+# Optional: Run without LLM for faster testing
 python nash_simulation.py --config simulation_params_n100.json --no-llm
+
+# Optional: Specify custom output file
+python nash_simulation.py --config simulation_params_n100.json --output my_results.json
 
 # Test LLM connection
 python test_llm_connection.py
@@ -199,24 +202,35 @@ Profit ratio = 58x (manageable vs 312x problematic)
 
 ## Setup
 
-1. Copy `.env.example` to `.env` and configure:
+1. Clone the repository:
+```bash
+git clone https://github.com/andrasfe/nash.git
+cd nash
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Configure AI/LLM credentials:
 ```bash
 cp .env.example .env
 ```
 
-2. Edit `.env` with your API credentials:
+4. Edit `.env` with your API credentials:
 ```
 API_KEY=your_api_key_here
 BASE_URL=https://api.openai.com/v1/chat/completions
 MODEL=gpt-4o-mini
 ```
 
-3. Install dependencies:
+5. Generate simulation parameters:
 ```bash
-pip install -r requirements.txt
+python nash_formulation.py 100 100  # 100 participants, 100 rounds
 ```
 
-4. Run simulation:
+6. Run the simulation:
 ```bash
 python nash_simulation.py --config simulation_params_n100.json
 ```
@@ -233,6 +247,11 @@ python nash_simulation.py --config simulation_params_n100.json
 - **Costs**: IG honest: $0.0004, H honest: $0.0001 (adjusted for fair rotation)
 
 ## Recent Updates
+
+### Simplified Workflow (2025-01)
+- **Config-based execution**: Simulation now requires pre-generated config file from `nash_formulation.py`
+- **Removed direct parameter calculation**: All Nash equilibrium parameters must be generated first
+- **Cleaner separation**: Parameter generation (nash_formulation.py) vs simulation (nash_simulation.py)
 
 ### Fair Rotation Implementation (2025-01)
 - **Removed permanent roles**: All participants are eligible for H validator selection
