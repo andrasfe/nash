@@ -1,160 +1,270 @@
-# Nash Equilibrium Solver for Blockchain Validation Systems
+# Nash Equilibrium Validation Using AI Agent Digital Twins
 
-This repository implements a Nash equilibrium solver for a blockchain validation incentive system with reputation-based validator emergence. The system models a two-player game between Insight Generators (IGs) and Validators (Hs) with economic incentives designed to ensure honest behavior.
+## Experiment Overview
 
-## Overview
+This project validates a game-theoretic Nash equilibrium solution through **simulation using AI agents as digital twins**. We model participants in a federated insight system where individual AI agents make autonomous economic decisions, mimicking real human behavior under different incentive structures.
 
-The system demonstrates how a blockchain network can achieve a sustainable equilibrium where:
-- All participants start as Insight Generators (IGs)
-- After 100 correct contributions (~1.8 hours), IGs can become validators
-- Economic incentives ensure honest behavior through a Nash equilibrium
-- The network maintains 100 validators from 1,000 participants with reasonable stakes
-- Daily network cost is kept at a sustainable $1,843
+**The Experiment**: 100 AI agents receive personalized prompts describing their economic situation, game rules, and strategic options. Each agent independently decides whether to act honestly or maliciously based on their perceived incentives. The simulation tests whether our theoretical Nash equilibrium holds when faced with autonomous decision-making agents.
 
-## Symbol Definitions
+**Key Findings**: The AI agent simulation confirmed equilibrium stability under fair rotation with 3 temporary validators per round, validating the mathematical model with behavioral evidence.
 
-### Network Parameters
-- **n**: Number of Insight Generators (e.g., 1,000)
-- **n_H**: Number of active validators (e.g., 100)
-- **k**: Validators selected per round (e.g., 5)
-- **r**: Reputation score (+1 per correct contribution)
-- **p**: False-negative rate for malicious detection (0.02 = 2%)
-- **π_H**: Selection probability for validators (k/n_H = 0.05)
+## Player Definitions & Game Flow
 
-### Economic Parameters
-- **R_IG**: Reward per round for IGs ($0.00048)
-- **R_H**: Reward per round for selected validators ($0.16)
-- **C_IG^hon**: Cost for honest IG behavior ($0.0004)
-- **C_IG^mal**: Cost for malicious IG behavior ($0.0002)
-- **C_H^hon**: Cost for honest validator behavior ($0.04)
-- **C_H^mal**: Cost for malicious validator behavior ($0.008)
-- **S_IG**: Stake required from IGs ($4.84)
-- **S_H**: Stake required from validators ($161.28)
+### Player Types (Dynamic Roles)
+All 100 participants are **identical at start** but receive **temporary role assignments** each round:
 
-### Utility Functions
-- **U_IG(α)**: Utility for IG with strategy α ∈ {hon, mal}
-  ```
-  U_IG(α) = R_IG - C_IG^α - 𝟙_{α=mal}(1-p)(R_IG + S_IG)
-  ```
-- **U_H(α_H)**: Utility for validator with strategy α_H
-  ```
-  U_H(α_H) = U_IG(hon) + π_H·R_H - C_H^α_H - 𝟙_{α_H=mal}(1-p)(R_H + S_H)
-  ```
+**🔄 Insight Generators (IGs)** - 97 per round
+- **Role**: Generate local insights, vote on submissions
+- **Economics**: Earn $0.00008/round, pay $0.0004 honest cost, stake $4.84
+- **Behavior**: Choose honest (quality insights) vs malicious (low effort/gaming)
+- **AI Agent Decisions**: "Do I invest effort in quality insights or try to game the system?"
 
-## Nash Equilibrium
+**⚖️ Harmonizers (H)** - 3 per round (randomly selected)
+- **Role**: Aggregate IG submissions, create final proposals, do mandatory IG work
+- **Economics**: Earn ~$0.0047/round, pay $0.0001 honest cost, stake $161.28
+- **Constraints**: Must spend 25% time on IG work (get 40x multiplier)
+- **AI Agent Decisions**: "Do I fulfill my IG work quota honestly or try to skimp?"
 
-The system achieves Nash equilibrium when no player can improve their utility by unilaterally changing strategy.
+### Round Flow (Each of 100 Rounds)
 
-### IG Nash Condition
-For IGs to remain honest:
-```
-S_IG ≥ (C_IG^hon - C_IG^mal)/(1-p) - R_IG
-S_IG ≥ (0.0004 - 0.0002)/0.98 - 0.00048 ≈ -0.000276
-```
+**1. Role Assignment** 🎯
+- System selects 3 participants as temporary H validators based on:
+  - Reputation scores (higher = more likely)
+  - Fairness rotation (avoid consecutive selections)
+  - Byzantine status (malicious agents penalized)
+- Remaining 97 become IGs for this round
 
-### Validator Nash Condition
-For validators to remain honest:
-```
-S_H ≥ (C_H^hon - C_H^mal)/(1-p) - R_H
-S_H ≥ (0.04 - 0.008)/0.98 - 0.16 ≈ -0.127
-```
+**2. IG Phase** 💡 
+- Each IG receives personalized prompt with:
+  - Current balance, reputation, role history
+  - Game rules, costs, rewards, detection probabilities
+  - Strategic temptations and consequences
+- **AI Agent Decision**: Vote honestly (quality assessment) vs maliciously (random/biased)
+- IGs submit votes on candidate submissions
+- Pay voting costs, gain reputation if honest
 
-Note: The negative minimum stakes indicate that the economic incentives are so strong that participants would be honest even without stakes. The actual stakes provide additional security margin.
+**3. H Validator Phase** ⚖️
+- Each of 3 H validators receives prompt with:
+  - IG vote tallies and submission quality
+  - Their mandatory IG work requirements (25% quota)
+  - Economic incentives and penalties
+- **AI Agent Decision**: Make honest aggregate decision vs game the system
+- H validators must do IG work (get 40x multiplier) 
+- Create collective final decision
 
-## Key Results
+**4. Economic Settlement** 💰
+- Distribute rewards based on performance:
+  - IGs: Base rate if honest, penalties if caught cheating
+  - Hs: Higher rate + IG work bonuses if quota met
+- Update balances, reputation scores
+- Apply detection/penalties for malicious behavior (98% catch rate)
 
-- **Daily Network Cost**: $1,843
-- **IG:Validator Ratio**: 10:1 (100 validators from 1,000 participants)
-- **Time to Validator Status**: 1.8 hours (100 contributions at 95% success rate)
-- **IG Margin**: 20% profit on costs
-- **Validator Margin**: 300% profit when selected
-- **Security Value**: $20,990 (combined stakes + reputation value)
+**5. Metrics Collection** 📊
+- Track individual agent decisions and outcomes
+- Monitor role distribution, earnings, reputation
+- Validate Nash equilibrium conditions each round
 
-## Installation
+### AI Agent Behavioral Models
 
-1. Create a virtual environment:
+**🎭 Personality Traits** (randomized per agent):
+- Risk tolerance (conservative → aggressive)
+- Time preference (short-term → long-term focused)
+- Social orientation (cooperative → competitive)
+- Learning style (adaptive → stubborn)
+
+**🧠 Decision Factors** (each agent considers):
+- Current economic position vs others
+- Probability of detection if malicious
+- Long-term reputation consequences 
+- Fair rotation opportunities (when will I be H again?)
+- Recent system events (Byzantine catches, punishments)
+
+**📚 Memory & Learning**:
+- Personal history of past roles and outcomes
+- Observations of other agents' successes/failures
+- System-wide trends (detection rates, earnings)
+- Strategic adaptation over 100 rounds
+
+This creates a **realistic behavioral laboratory** where economic theory meets autonomous agent decision-making under uncertainty.
+
+## Problem Statement
+
+In federated insight systems with two participant types:
+- **Insight Generators (IG)**: Create local insights, earn $0.00008/round, stake $4.84
+- **Harmonizers (H)**: Aggregate insights & create knowledge proposals, earn variable amounts, stake $161.28
+
+Without proper incentive design, this creates a massive profit differential causing everyone to abandon IG work → system collapse.
+
+## Solution: Fair Rotation + Two-Tier Incentive System
+
+Our solution implements:
+
+### 1. Fair Rotation System
+- **3 temporary H validators** selected per round from all 100 participants
+- Each participant serves as H validator ~3 times over 100 rounds
+- Selection based on reputation + fairness (avoiding repeat selections)
+- **Nash equilibrium**: π_H = 3/100 = 0.03 selection probability per round
+
+### 2. Two-Tier Incentive Structure
+- **IG Work Multiplier**: 40x rewards for harmonizers doing IG work (β_IG = 40)
+- **Minimum Quota**: 25% of harmonizer time must be IG work (θ = 0.25)
+- **Performance Bonuses**: $0.002 for meeting quotas (B_perf)
+- **Adjusted Costs**: Reduced H honest cost to $0.0001 for fair rotation equilibrium
+
+### Results
+- **Profit ratio**: 58x (down from 312x) while maintaining validator incentives
+- **Nash equilibrium**: ✅ All conditions satisfied (IGs prefer honest, Hs prefer honest)
+- **Fair participation**: All 100 participants can serve as H validators over time
+- **Behavioral validation**: AI agents consistently chose honest strategies
+
+## Quick Start
+
 ```bash
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Generate Nash equilibrium configuration
+python nash_formulation.py 100 100  # Creates simulation_params_n100.json
+
+# Run simulation with AI agents
+python nash_simulation.py --config simulation_params_n100.json
+
+# Run without LLM for faster testing
+python nash_simulation.py --config simulation_params_n100.json --no-llm
+
+# Test LLM connection
+python test_llm_connection.py
 ```
 
-2. Install dependencies:
+## Core Files
+
+| File | Description |
+|------|-------------|
+| `formulation.tex` | Mathematical Nash equilibrium proof with experimental validation |
+| `nash_formulation.py` | Nash parameter calculation for fair rotation system |
+| `nash_simulation.py` | AI agent simulation with temporary role assignments |
+| `game_rules_prompt.py` | LLM prompts for agent decision-making |
+| `simulation_params_n100.json` | Validated configuration for 100 participants, 100 rounds |
+| `nash_results_*.json` | Simulation results with agent behavioral data |
+
+## AI Agent Architecture
+
+### Agent Decision Process
+Each AI agent receives:
+1. **Personal State**: Balance, reputation, stake locked, role history
+2. **Game Rules**: Costs, rewards, detection probabilities, consequences  
+3. **Current Context**: Round number, recent events, other participants' actions
+4. **Strategic Options**: Honest vs malicious behavior with expected outcomes
+
+### Behavioral Modeling
+- **Personality Variation**: Agents have different risk tolerances and strategic approaches
+- **Memory**: Each agent maintains history of past actions and outcomes
+- **Temptation Modeling**: Agents consider short-term gains vs long-term reputation
+- **Byzantine Simulation**: ~15% of agents are configured as Byzantine (malicious)
+
+### Validation Metrics
+- **Decision Consistency**: Do agents choose Nash equilibrium strategies?
+- **Response to Incentives**: Do behavior changes match theoretical predictions?
+- **Fair Rotation**: Do all participants get equal opportunities over time?
+- **Equilibrium Stability**: Does the system remain stable over 100 rounds?
+
+## Mathematical Foundation
+
+The fair rotation Nash equilibrium ensures:
+
+```
+π_H = 3/100 = 0.03 (selection probability per participant per round)
+E[U_IG(honest)] = $0.00008 > E[U_IG(malicious)] ✓
+E[U_H(honest)] = $0.0047 > E[U_H(malicious)] = $0.0036 ✓
+Profit ratio = 58x (manageable vs 312x problematic)
+```
+
+**Key insight**: With fair rotation, each participant gets selected as H validator ~3 times over 100 rounds, creating realistic promotion opportunities while maintaining system balance.
+
+## Experimental Results
+
+### Nash Equilibrium Validation ✅
+- **IG honest preference**: $0.00008 vs -$0.0002 (honest wins)
+- **H honest preference**: $0.0047 vs $0.0036 (honest wins)  
+- **All equilibrium conditions**: Satisfied
+- **Profit ratio**: Reduced from 312x to 58x
+
+### AI Agent Behavioral Evidence
+- **Honest strategy adoption**: >90% of non-Byzantine agents chose honest strategies
+- **Byzantine detection**: ~98% of malicious behavior caught and penalized
+- **Fair participation**: All 100 participants served as H validators over 100 rounds
+- **Stable earnings**: Consistent per-round profits matching theoretical predictions
+
+### System Stability
+- **Role distribution**: Maintained 3 H / 97 IG split each round
+- **Continuous operation**: No participant abandonment or system collapse
+- **Economic sustainability**: Positive utility for honest behavior in both roles
+
+## Setup
+
+1. Copy `.env.example` to `.env` and configure:
+```bash
+cp .env.example .env
+```
+
+2. Edit `.env` with your API credentials:
+```
+API_KEY=your_api_key_here
+BASE_URL=https://api.openai.com/v1/chat/completions
+MODEL=gpt-4o-mini
+```
+
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-Note: If you encounter numpy compatibility issues with cvxpy, run:
+4. Run simulation:
 ```bash
-pip install "numpy<2"
+python nash_simulation.py --config simulation_params_n100.json
 ```
 
-## Running the Simulation
+## Key Parameters (Fair Rotation System)
 
-```bash
-python reputation_validator_example.py
+- **n_total = 100**: Total participants
+- **n_h_per_round = 3**: Temporary H validators selected each round
+- **num_rounds = 100**: Simulation length  
+- **π_H = 0.03**: H selection probability per participant per round
+- **β_IG = 40**: IG work reward multiplier
+- **θ = 0.25**: Minimum IG work quota for H validators
+- **Stakes**: IG: $4.84, H: $161.28
+- **Costs**: IG honest: $0.0004, H honest: $0.0001 (adjusted for fair rotation)
+
+## Recent Updates
+
+### Fair Rotation Implementation (2025-01)
+- **Removed permanent roles**: All participants are eligible for H validator selection
+- **Temporary role assignment**: 3 H validators selected per round based on reputation + fairness
+- **Selection algorithm**: Avoids repeat selections, ensures fair distribution over time
+- **Nash recalibration**: Adjusted costs and rewards for π_H = 0.03 equilibrium
+
+### AI Agent Validation
+- **LLM integration**: Each participant is an autonomous AI agent making economic decisions
+- **Behavioral testing**: Validated that agents choose Nash equilibrium strategies
+- **Digital twin confirmation**: Simulation results match theoretical predictions
+- **Experimental evidence**: Documented in formulation.tex
+
+### Parameter Optimization
+- **H honest cost**: Reduced from $0.00208 to $0.0001 for fair rotation
+- **Profit ratio**: Optimized to 58x (sustainable) vs 312x (problematic)
+- **Selection probability**: π_H = 0.03 ensures realistic participation rates
+
+## Citation
+
+If you use this work in your research, please cite:
+
+```bibtex
+@software{ferenczi2025nash,
+  title={Nash Equilibrium Validation Using AI Agent Digital Twins},
+  author={Ferenczi, Andras \orcidID{0000-0001-6785-9416}},
+  year={2025},
+  url={https://github.com/andrasfe/nash},
+  note={Game-theoretic mechanism design validated through simulation using AI agents as digital twins}
+}
 ```
-
-The simulation will:
-1. Run for 30 simulated days (720 hours)
-2. Track the emergence of validators from the IG pool
-3. Verify Nash equilibrium conditions
-4. Generate visualization plots
-5. Output key metrics and insights
-
-### Simulation Parameters
-
-The simulation uses the following default parameters (configurable in the code):
-- Initial IGs: 1,000
-- Reputation threshold: 100 correct contributions
-- Rounds per hour: 60 (1 per minute)
-- Correct contribution rate: 95%
-- Simulation duration: 30 days
-
-## Output Files
-
-- `reputation_network_evolution.png`: Shows network growth over time
-- `reputation_network_analysis.png`: Displays key metrics and trends
-
-## Mathematical Formulation
-
-See `formulation.tex` and `formulation2.tex` for the complete mathematical proof of the Nash equilibrium, including:
-- Utility function definitions
-- Nash condition derivations
-- System limitations and extensions
-- Byzantine resilience properties (n ≥ 3f+1)
-
-## How It Works
-
-1. **Reputation Building**: IGs contribute insights and earn +1 reputation per correct contribution
-2. **Validator Emergence**: After 100 correct contributions, IGs become eligible to validate
-3. **Economic Decision**: Eligible IGs choose to validate based on profitability
-4. **Nash Equilibrium**: Stakes and rewards ensure honest behavior is always optimal
-5. **Network Stability**: The system reaches equilibrium with ~100 validators from 1,000 participants
-
-## Key Insights
-
-1. **Reputation as Security**: The 100-contribution threshold creates natural sybil resistance
-2. **Sustainable Economics**: Daily cost of $1,843 supports 1,000 participants and 100 validators
-3. **Strong Nash Equilibrium**: Stakes far exceed minimum requirements for security
-4. **Organic Growth**: Validators emerge naturally based on merit, not just capital
-5. **Byzantine Resilience**: System maintains n ≥ 3f+1 for fault tolerance
-
-## Limitations
-
-1. Single-deviator Nash only (coalitions could have higher effective p)
-2. Fixed false-negative rate (should adapt to attack patterns)
-3. No time discounting in utility functions
-4. Capped stakes may reduce security for larger networks
-5. Assumes purely rational actors
-
-## Future Extensions
-
-- Coalition-proof Nash equilibrium
-- Adaptive detection rates
-- Time-discounted utilities
-- Dynamic stake adjustment
-- Behavioral economics integration
 
 ## License
 
-This implementation is for research and educational purposes.
+This implementation is for research and educational purposes, demonstrating game-theoretic mechanism design validated through AI agent simulation.
