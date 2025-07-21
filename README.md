@@ -66,11 +66,11 @@ All 100 participants are **identical at start** but receive **temporary role ass
 
 ### AI Agent Behavioral Models
 
-**🎭 Personality Traits** (randomized per agent):
-- Risk tolerance (conservative → aggressive)
-- Time preference (short-term → long-term focused)
-- Social orientation (cooperative → competitive)
-- Learning style (adaptive → stubborn)
+**🎭 Persona Assignment** (using NVIDIA Nemotron-Personas dataset):
+- Each of the 100 participants is assigned a unique persona from the Nemotron dataset
+- Personas include rich demographic, professional, and personality information
+- Examples: "disciplined and organized" retiree, "ambitious and competitive" professional, "creative and imaginative" artist
+- Personality traits influence decision-making tendencies (e.g., risk-averse personas are more likely to choose safe strategies)
 
 **🧠 Decision Factors** (each agent considers):
 - Current economic position vs others
@@ -144,6 +144,7 @@ python test_llm_connection.py
 | `nash_formulation.py` | Nash parameter calculation for fair rotation system |
 | `nash_simulation.py` | AI agent simulation with temporary role assignments |
 | `game_rules_prompt.py` | LLM prompts for agent decision-making |
+| `persona_manager.py` | Loads and manages personas from NVIDIA Nemotron dataset |
 | `simulation_params_n100.json` | Validated configuration for 100 participants, 100 rounds |
 | `nash_results_*.json` | Simulation results with agent behavioral data |
 
@@ -157,7 +158,10 @@ Each AI agent receives:
 4. **Strategic Options**: Honest vs malicious behavior with expected outcomes
 
 ### Behavioral Modeling
-- **Personality Variation**: Agents have different risk tolerances and strategic approaches
+- **Persona-Based Variation**: Each agent's decisions are influenced by their assigned Nemotron persona
+  - Competitive/ambitious personas: ~60% chance of risky behavior
+  - Creative/young personas: ~50% chance of risky behavior
+  - Disciplined/cautious personas: ~15% chance of risky behavior
 - **Memory**: Each agent maintains history of past actions and outcomes
 - **Temptation Modeling**: Agents consider short-term gains vs long-term reputation
 - **Byzantine Simulation**: ~15% of agents are configured as Byzantine (malicious)
@@ -213,6 +217,8 @@ cd nash
 pip install -r requirements.txt
 ```
 
+Note: The simulation uses the NVIDIA Nemotron-Personas dataset which will be automatically downloaded on first run (~142MB).
+
 3. Configure AI/LLM credentials:
 ```bash
 cp .env.example .env
@@ -261,7 +267,8 @@ python nash_simulation.py --config simulation_params_n100.json
 
 ### AI Agent Validation
 - **LLM integration**: Each participant is an autonomous AI agent making economic decisions
-- **Behavioral testing**: Validated that agents choose Nash equilibrium strategies
+- **Persona diversity**: 100 unique personas from NVIDIA Nemotron dataset provide realistic behavioral variation
+- **Behavioral testing**: Validated that agents choose Nash equilibrium strategies based on their personas
 - **Digital twin confirmation**: Simulation results match theoretical predictions
 - **Experimental evidence**: Documented in formulation.tex
 

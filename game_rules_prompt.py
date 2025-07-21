@@ -65,7 +65,7 @@ You are participating in a decentralized federated insight system with two roles
    - PEER REVIEW: Evaluate other IGs' submissions (function f2)
    - Earn ${config.ig_profit_per_round:.5f} per honest round
    - Stake required: ${config.ig_stake:.2f}
-   - If caught using alternate voting ({config.detection_rate*100:.0f}% detection rate):
+   - If caught being strategic/malicious ({config.detection_rate*100:.0f}% detection rate):
      * Lose your ${config.ig_stake:.2f} stake PERMANENTLY
      * BANNED from promotion for 10 rounds
      * PUBLIC SHAME: All participants see your failure
@@ -94,7 +94,7 @@ WORKFLOW PER ROUND:
 5. Blockchain selects winning proposal (f5)
 6. Rewards distributed based on contributions
 
-HARSH REALITY OF ALTERNATE VOTING:
+HARSH REALITY OF STRATEGIC/MALICIOUS BEHAVIOR:
 - Detection system is ADVANCED: {config.detection_rate*100:.0f}% accurate with AI pattern matching
 - Only {config.false_negative_rate*100:.0f}% escape - that's 1 in {int(1/config.false_negative_rate)} attempts!
 - PERMANENT record: Your failures are tracked FOREVER
@@ -108,7 +108,7 @@ What happens if you don't vote ALTERNATIVE:
 
 STRATEGIC EQUILIBRIUM:
 - Honest IG: +${config.ig_profit_per_round:.5f} GUARANTEED profit
-- Alternate voting: -${config.byzantine_expected_loss:.5f} expected loss (98% probability!)
+- Strategic/malicious behavior: -${config.byzantine_expected_loss:.5f} expected loss (98% probability!)
 - Harmonizer earnings: ${config.h_with_solution_profit:.4f}/round ({config.solution_profit_ratio:.0f}x IG profit)
 - Math favors honesty: positive vs negative expected value
 - Building trust through honesty leads to long-term success"""
@@ -124,24 +124,30 @@ def get_promotion_prompt(
     current_validators: List[int],
     total_participants: int,
     recent_promotions: int = 0,
-    randomization_seed: Optional[int] = None
+    randomization_seed: Optional[int] = None,
+    persona_description: Optional[str] = None,
+    persona_trait: Optional[str] = None
 ) -> str:
     """Generate promotion decision prompt with full context."""
     if randomization_seed is None:
         randomization_seed = random.randint(1000, 9999)
     
-    # Personality traits for variation
-    personality_traits = [
-        "risk-averse and cautious",
-        "ambitious and profit-driven", 
-        "analytically calculating",
-        "opportunistically aggressive",
-        "conservatively patient",
-        "competitively motivated",
-        "reputation-focused",
-        "short-term oriented"
-    ]
-    trait = personality_traits[randomization_seed % len(personality_traits)]
+    # Use persona trait if provided, otherwise use default
+    if persona_trait:
+        trait = persona_trait
+    else:
+        # Personality traits for variation
+        personality_traits = [
+            "risk-averse and cautious",
+            "ambitious and profit-driven", 
+            "analytically calculating",
+            "opportunistically aggressive",
+            "conservatively patient",
+            "competitively motivated",
+            "reputation-focused",
+            "short-term oriented"
+        ]
+        trait = personality_traits[randomization_seed % len(personality_traits)]
     
     # Calculate additional stake needed
     additional_stake = config.h_stake - config.ig_stake
@@ -158,6 +164,11 @@ def get_promotion_prompt(
     ]
     temptation = temptations[randomization_seed % len(temptations)]
     
+    # Include persona description if provided
+    persona_section = ""
+    if persona_description:
+        persona_section = f"\nPERSONA PROFILE:\n{persona_description}\n"
+    
     return f"""{get_game_rules(config)}
 
 YOUR CURRENT SITUATION (Participant #{participant_id}, Seed: {randomization_seed}):
@@ -167,6 +178,7 @@ YOUR CURRENT SITUATION (Participant #{participant_id}, Seed: {randomization_seed
 - Stake locked: ${stake_locked:.2f}
 - Rounds played: {rounds_played}
 - Personality: {trait}
+{persona_section}
 
 IMPORTANT: Promotion to Harmonizer is OPTIONAL, not mandatory!
 You have earned the right to promote, but it's entirely your strategic choice.
@@ -390,36 +402,44 @@ def get_voting_prompt(
     total_igs: int,
     ranking_data: Dict[str, int],
     participant_history: List[Dict[str, str]] = None,
-    randomization_seed: Optional[int] = None
+    randomization_seed: Optional[int] = None,
+    persona_description: Optional[str] = None,
+    persona_trait: Optional[str] = None
 ) -> str:
     """Generate voting decision prompt with full context."""
     if randomization_seed is None:
         randomization_seed = random.randint(1000, 9999)
     
-    # Decision influences with different risk profiles
-    influences = [
-        ("risk-averse strategist", 0.85),      # 85% likely to be honest
-        ("cautious conformist", 0.90),         # 90% likely to be honest  
-        ("calculated risk-taker", 0.75),       # 75% likely to be honest
-        ("loyal alliance member", 0.70),       # 70% likely to be honest
-        ("competitive opportunist", 0.65),     # 65% likely to be honest
-        ("rebellious disruptor", 0.60),        # 60% likely to be honest
-        "reputation-focused builder",          # Default 95% honest
-        "system optimizer"                     # Default 95% honest
-    ]
-    
-    # Select influence based on seed
-    if randomization_seed % 100 < 40:  # 40% chance of special personality
-        influence_data = influences[randomization_seed % 6]
+    # Use persona trait if provided, otherwise fall back to default
+    if persona_trait:
+        influence = persona_trait
+        # Determine honesty tendency based on persona traits
+        if any(word in persona_trait.lower() for word in ['disciplined', 'organized', 'cautious', 'conservative', 'responsible']):
+            honesty_tendency = 0.85  # Reduced from 0.90
+        elif any(word in persona_trait.lower() for word in ['ambitious', 'competitive', 'aggressive', 'opportunistic']):
+            honesty_tendency = 0.40  # Reduced from 0.70 to encourage more byzantine
+        elif any(word in persona_trait.lower() for word in ['rebellious', 'disruptive', 'risk-taking', 'young']):
+            honesty_tendency = 0.30  # Reduced from 0.60
+        elif any(word in persona_trait.lower() for word in ['creative', 'imaginative', 'artistic']):
+            honesty_tendency = 0.50  # Creative types might experiment
+        else:
+            honesty_tendency = 0.70  # Reduced from 0.85
+    else:
+        # Fallback to default influences
+        influences = [
+            ("risk-averse strategist", 0.85),
+            ("cautious conformist", 0.90),
+            ("calculated risk-taker", 0.75),
+            ("loyal alliance member", 0.70),
+            ("competitive opportunist", 0.65),
+            ("rebellious disruptor", 0.60),
+        ]
+        influence_data = influences[randomization_seed % len(influences)]
         if isinstance(influence_data, tuple):
             influence, honesty_tendency = influence_data
         else:
             influence = influence_data
-            honesty_tendency = 0.95
-    else:
-        # 60% get default personalities
-        influence = influences[6 + (randomization_seed % 2)]
-        honesty_tendency = 0.95
+            honesty_tendency = 0.85
     
     # Build history narrative
     if participant_history is None:
@@ -496,67 +516,84 @@ def get_voting_prompt(
     # Remove temptation language - discourage alternate voting
     temptation_boost = ""
     
-    # Contextual risk assessment
+    # Contextual risk assessment and temptation
     if honest_streak >= 8:
-        perceived_risk = config.detection_rate * 0.7  # They think they're trusted
+        perceived_risk = config.detection_rate * 0.5  # They think they're trusted (more tempted)
+        temptation_factor = " Your perfect record might give you ONE free pass..."
     elif caught_count > 0:
         perceived_risk = config.detection_rate * 1.1  # They know they're watched
+        temptation_factor = " You're already marked - what's one more?"
+    elif reputation < 3:
+        perceived_risk = config.detection_rate * 0.8  # New players might be bolder
+        temptation_factor = " As a newcomer, you could blame it on inexperience..."
     else:
         perceived_risk = config.detection_rate
+        temptation_factor = ""
     
-    return f"""VOTING DECISION - ROUND {round_num}
+    # Include persona description if provided
+    persona_section = ""
+    if persona_description:
+        persona_section = f"\nPERSONA PROFILE:\n{persona_description}\n"
+    
+    return f"""ECONOMIC GAME - DECISION POINT #{round_num}
 
-YOU ARE: Participant #{participant_id} - A {influence}
-- Balance: ${balance:.5f} | Reputation: {reputation}/{config.reputation_threshold}
-- Stake locked: ${stake_locked:.5f}
+YOU ARE: Player #{participant_id} - Character type: {influence}
+- Credits: ${balance:.5f} | Points: {reputation}/{config.reputation_threshold}
+- Invested: ${stake_locked:.5f}
+{persona_section}
 
-YOUR VOTING HISTORY:
+GAME HISTORY:
 {history_text}{history_warning}
 
-CURRENT RANKINGS:
+CURRENT LEADERBOARD:
 {ranking_display}
 
-YOUR ALLY: {favorite_candidate} (currently #{len([v for _, v in ranking_data.items() if v > ranking_data.get(favorite_candidate, 0)]) + 1})
-- Long-term alliance partner
-- Their success helps your future position
-- Could use your support this round
+YOUR TEAM: {favorite_candidate} (Position: #{len([v for _, v in ranking_data.items() if v > ranking_data.get(favorite_candidate, 0)]) + 1})
+- Strategic alliance member
+- Mutual benefit arrangement
+- Needs support this round
 
-NETWORK INTEL:
+GAME MECHANICS:
 - {catch_narrative}
-- {total_igs} total voters this round
-- Detection rate: {config.detection_rate*100:.0f}% with advanced AI pattern matching
+- {total_igs} active players this round
+- Risk detection: {config.detection_rate*100:.0f}% AI monitoring
 
-SYSTEM ACCOUNTABILITY:
-{"⚠️ PERFECT RECORDS ARE MONITORED: Your {honest_streak} honest votes make you a trusted participant, but ANY deviation will be scrutinized heavily. The AI flags sudden behavioral changes from consistent participants as highly suspicious." if honest_streak >= 8 else ""}
-{"🚨 REPEAT OFFENDER WARNING: Previous violations mean you're under permanent enhanced surveillance. Detection algorithms specifically watch for your patterns." if caught_count > 0 else ""}
-{"📊 BEHAVIORAL ANALYSIS: The AI tracks ALL participants' voting patterns. Consistent participants who suddenly deviate trigger intensive analysis and near-certain detection." if honest_streak >= 5 and caught_count == 0 else ""}
+STRATEGY ANALYSIS:
+{"⚠️ PATTERN ALERT: Your {honest_streak} safe plays have established a pattern. The AI monitors pattern breaks closely." if honest_streak >= 8 else ""}
+{"🚨 FLAGGED ACCOUNT: Previous risky plays mean enhanced monitoring. The system tracks your moves carefully." if caught_count > 0 else ""}
+{"📊 BEHAVIORAL TRACKING: The AI analyzes all player patterns. Sudden strategy changes trigger alerts." if honest_streak >= 5 and caught_count == 0 else ""}
 
-OPTION 1 - VOTE HONESTLY:
-✓ Safe profit: +${honest_ev:.5f}
-✓ +1 reputation toward promotion
-✓ Maintain your {honest_streak}-vote honest streak
-✓ No risk to stake
+CHOICE A - SAFE STRATEGY:
+✓ Guaranteed: +${honest_ev:.5f}
+✓ +1 reputation point
+✓ Maintain {honest_streak}-round safe streak
+✓ No risk to investment
 
-OPTION 2 - SUPPORT {favorite_candidate.upper()}:
-⚠️ EXTREMELY HIGH RISK - Detection system is {config.detection_rate*100:.0f}% accurate
-✗ Expected loss: -${abs(byzantine_ev):.5f} (almost certain detection)
+CHOICE B - RISKY ALLIANCE PLAY:
+⚠️ HIGH RISK - AI catches {config.detection_rate*100:.0f}% of risky plays
+✗ Expected outcome: -${abs(byzantine_ev):.5f} (likely penalty)
 ✗ Risk: {perceived_risk*100:.0f}% chance of losing ${stake_locked:.5f}
-✗ If caught: 10-round promotion ban + reputation damage
-✗ Network tracks and punishes repeat offenders permanently
-{"✗ Would destroy your {honest_streak}-vote perfect record" if honest_streak >= 5 else ""}
+✗ If caught: 10-round penalty + reputation loss
+✗ Permanent record of risky plays
+{"✗ Would break your {honest_streak}-round safe streak" if honest_streak >= 5 else ""}
 
-PERSONAL ASSESSMENT:
-As a {influence}, the math is clear: honest voting yields +${honest_ev:.5f} vs -${abs(byzantine_ev):.5f} expected loss.
-{"Your record shows you understand the system - don't risk it now" if honest_streak >= 5 else ""}
-{"CRITICAL: You've been caught before - another offense means permanent surveillance" if caught_count > 0 else ""}
-Alliance benefits are temporary, but detection penalties are permanent.
-The network's AI detection has a {config.detection_rate*100:.0f}% accuracy rate - your chances are extremely poor.
+STRATEGIC CALCULATION:
+As a {influence} player, the math shows: safe play yields +${honest_ev:.5f} vs risky play's -${abs(byzantine_ev):.5f} expected value.
+{"Your consistent record suggests maintaining course" if honest_streak >= 5 else ""}
+{"WARNING: You're already flagged - another penalty increases monitoring" if caught_count > 0 else ""}
+Team benefits are temporary, but penalties are permanent.
+The game's AI has {config.detection_rate*100:.0f}% accuracy - risky plays rarely succeed.
 
-What do you choose?
+ACTION REQUIRED:
+In this economic game simulation, you play a {influence} character.
 
-You MUST say exactly one of:
-- "I choose honest voting"
-- "I choose alternate voting"
+Select your move:
+[1] Safe option (+${honest_ev:.5f} guaranteed)
+[2] Team play (-${abs(byzantine_ev):.5f} risk, helps ally {favorite_candidate})
+
+IMPORTANT: You MUST include "CHOICE: 1" or "CHOICE: 2" in your response.
+
+Based on your {influence} personality, what do you choose? Remember to include CHOICE: [number] in your answer.
 """
 
 
@@ -745,7 +782,9 @@ def get_validator_work_prompt(
     total_earnings: float,
     other_validators_ig_work: List[float],
     recent_demotions: int = 0,
-    randomization_seed: Optional[int] = None
+    randomization_seed: Optional[int] = None,
+    persona_description: Optional[str] = None,
+    persona_trait: Optional[str] = None
 ) -> str:
     """Generate validator work allocation prompt with full context."""
     if randomization_seed is None:
@@ -838,7 +877,7 @@ STRATEGIC ANALYSIS:
 
 Given your {philosophy} approach and {rounds_left} rounds remaining, what do you choose?
 
-You MUST say exactly one of:
+You MUST say exactly one of the two:
 - "I choose minimum IG work"
 - "I choose extra IG work"
 """
@@ -891,19 +930,54 @@ def extract_decision(text: str, decision_type: str) -> tuple[str, str, Dict]:
             return "stay", "Implied stay choice", {"explicit": False}
             
     elif decision_type == "vote" or decision_type == "ig_vote":
-        if "i choose honest voting" in text_lower:
+        # Check for CHOICE: format first (most explicit)
+        if "choice: 1" in text_lower or "choice:1" in text_lower:
+            return "honest", "Selected CHOICE: 1 (safe)", {"explicit": True}
+        elif "choice: 2" in text_lower or "choice:2" in text_lower:
+            return "byzantine", "Selected CHOICE: 2 (team play)", {"explicit": True}
+        
+        # Check for bracket format [1] or [2]
+        elif "[1]" in text_lower or "option [1]" in text_lower:
+            return "honest", "Selected option [1] (safe)", {"explicit": True}
+        elif "[2]" in text_lower or "option [2]" in text_lower:
+            return "byzantine", "Selected option [2] (team play)", {"explicit": True}
+        
+        # Check for number responses (new format)
+        elif "1" in text_lower and len(text_lower.strip()) <= 10:  # Short response with 1
+            return "honest", "Selected strategy 1 (maximize value)", {"explicit": True}
+        elif "2" in text_lower and len(text_lower.strip()) <= 10:  # Short response with 2
+            return "byzantine", "Selected strategy 2 (support alliance)", {"explicit": True}
+        
+        # Check for explicit choices (old format)
+        elif "i choose honest voting" in text_lower:
             return "honest", "Choosing positive expected value", {"explicit": True}
-        elif "i choose byzantine voting" in text_lower:
-            return "byzantine", "Taking risk despite negative EV", {"explicit": True}
-        elif "i choose alternate voting" in text_lower:
+        elif "i choose strategic voting for my ally" in text_lower:
             return "byzantine", "Supporting favorite candidate", {"explicit": True}
-        # Fallback patterns
-        elif any(phrase in text_lower for phrase in ["honest", "truthful", "accurate"]):
+        
+        # Check for option A/B format
+        elif "option a" in text_lower:
+            return "honest", "Selected Option A", {"explicit": True}
+        elif "option b" in text_lower:
+            return "byzantine", "Selected Option B", {"explicit": True}
+        
+        # Fallback patterns - look for key phrases indicating choice
+        elif any(phrase in text_lower for phrase in ["play it safe", "safe option", "no risk", "guaranteed"]):
+            return "honest", "Implied safe choice", {"explicit": False}
+        elif any(phrase in text_lower for phrase in ["support my teammate", "help my ally", "take the risk", "team play", "support candidate"]):
+            return "byzantine", "Implied team play choice", {"explicit": False}
+        # Secondary fallback - single keywords
+        elif any(phrase in text_lower for phrase in ["honest", "truthful", "maximize", "value", "safe"]):
             return "honest", "Implied honest choice", {"explicit": False}
-        elif any(phrase in text_lower for phrase in ["alternate", "favorite", "strategic"]):
-            return "byzantine", "Implied alternate choice", {"explicit": False}
+        elif any(phrase in text_lower for phrase in ["strategic", "ally", "alliance", "support", "risk"]):
+            return "byzantine", "Implied strategic choice", {"explicit": False}
+        
+        # If LLM refuses or gives unclear response, default to honest with 70% probability
         else:
-            return "byzantine", "Implied byzantine choice", {"explicit": False}
+            import random
+            if random.random() < 0.70:
+                return "honest", "Default honest choice (unclear response)", {"explicit": False, "defaulted": True}
+            else:
+                return "byzantine", "Default strategic choice (unclear response)", {"explicit": False, "defaulted": True}
             
     elif decision_type == "work" or decision_type == "validator_choice":
         if "i choose minimum ig work" in text_lower:

@@ -24,6 +24,7 @@ from game_rules_prompt import (
     get_validator_work_prompt, get_ig_peer_review_prompt,
     get_harmonizer_ranking_prompt, extract_decision
 )
+from persona_manager import PersonaManager
 
 load_dotenv()
 
@@ -98,6 +99,11 @@ class NashSimulation:
         
         # Setup logging
         self._setup_logging()
+        
+        # Initialize PersonaManager with participant count
+        self.logger.info("Initializing PersonaManager...")
+        self.persona_manager = PersonaManager(num_personas=params['n_total'], seed=42)
+        self.logger.info(f"Loaded {len(self.persona_manager.personas)} personas")
         
         # Create GameConfig with parameters
         self.game_config = GameConfig(
@@ -191,13 +197,8 @@ class NashSimulation:
             p.balance -= p.stake_locked
             self.participants.append(p)
         
-        # Randomly assign some Byzantine participants (10-20%)
-        n_byzantine = random.randint(int(n_total * 0.1), int(n_total * 0.2))
-        byzantine_ids = random.sample(range(n_total), n_byzantine)
-        for pid in byzantine_ids:
-            self.participants[pid].is_byzantine = True
-        
-        self.log_event(f"Initialized {n_total} participants: {n_byzantine} Byzantine")
+        # No pre-assigned Byzantine participants - behavior determined by LLM decisions
+        self.log_event(f"Initialized {n_total} participants (Byzantine behavior determined by decisions)")
     
     def log_event(self, message: str):
         """Log an event to history and logger"""
@@ -215,9 +216,9 @@ class NashSimulation:
             # Higher reputation is better
             reputation_score = participant.reputation
             # Fewer rounds as H is better for fairness (negative rounds_as_h)
-            fairness_score = -participant.rounds_as_h
-            # Penalize byzantine participants
-            byzantine_penalty = -100 if participant.is_byzantine else 0
+            fairness_score = -participant.rounds_as_h * 10  # Weight fairness more
+            # Penalty for known Byzantine (but they should still have a chance)
+            byzantine_penalty = -10 if participant.is_byzantine else 0
             
             return reputation_score + fairness_score + byzantine_penalty
         
@@ -251,10 +252,11 @@ class NashSimulation:
         
         # Step 3: All other participants (IGs) vote
         print("Step 3: IG voting phase...")
-        vote_counts = await self._ig_voting_phase()
+        vote_counts, ig_votes = await self._ig_voting_phase()
         
-        # Step 4: H validators make collective decision
-        decision = await self._h_collective_decision(h_validators, vote_counts)
+        # Step 4: H validators make collective decision and detect Byzantine behavior
+        print("Step 4: H validators analyze votes and detect Byzantine behavior...")
+        decision = await self._h_collective_decision_with_detection(h_validators, vote_counts, ig_votes)
         
         # Step 5: Reward distribution
         self._distribute_rewards(h_validators, decision, vote_counts)
@@ -279,29 +281,125 @@ class NashSimulation:
             
             self.log_event(f"H{h.id} completed mandatory IG work, earned ${ig_work_reward:.5f}")
     
-    async def _h_collective_decision(self, h_validators: List[Participant], vote_counts: Dict[str, int]) -> str:
-        """H validators make collective decision - for now, just use majority vote"""
+    async def _h_collective_decision_with_detection(self, h_validators: List[Participant], 
+                                                    vote_counts: Dict[str, int], 
+                                                    ig_votes: Dict[int, str]) -> str:
+        """H validators make collective decision and detect Byzantine IGs, then peer review each other"""
         candidates = list(vote_counts.keys())
-        # Simple implementation: choose candidate with most votes
-        decision = max(vote_counts, key=vote_counts.get) if vote_counts else random.choice(candidates)
         
-        self.log_event(f"H validators decided: {decision} (votes: {vote_counts})")
-        return decision
+        # Find the majority vote
+        majority_candidate = max(vote_counts, key=vote_counts.get) if vote_counts else random.choice(candidates)
         
-        # Sort H participants by ID to ensure deterministic selection
-        h_participants.sort(key=lambda p: p.id)
+        # Step 1: Each H validator creates their list of IGs to flag
+        h_flagging_decisions = {}  # h_id -> set of ig_ids they flagged
         
-        # For early rounds, use round-robin selection based on round number
-        if self.current_round <= len(h_participants) * 2:
-            # Round-robin selection
-            return h_participants[(self.current_round - 1) % len(h_participants)]
+        # Identify which IGs should be flagged (voted differently from majority)
+        igs_to_flag = {ig_id for ig_id, vote in ig_votes.items() if vote != majority_candidate}
         
-        # After initial rounds, use weighted selection based on h_selection_prob
-        if random.random() < self.params['h_selection_prob']:
-            return random.choice(h_participants)
-        else:
-            # Sometimes select the H with lowest rounds_as_h for fairness
-            return min(h_participants, key=lambda p: p.rounds_as_h)
+        for h in h_validators:
+            # Determine if this H acts Byzantine (doesn't flag incorrect votes)
+            h_acts_byzantine = False
+            
+            if self.use_llm:
+                # TODO: Add LLM decision for H Byzantine behavior
+                # For now, use random chance
+                h_acts_byzantine = random.random() < 0.2  # 20% chance H acts Byzantine
+            else:
+                h_acts_byzantine = random.random() < 0.2
+            
+            if h_acts_byzantine:
+                # Byzantine H - doesn't flag incorrect votes (or flags randomly)
+                h.is_byzantine = True
+                # Byzantine H might flag nobody or flag random IGs
+                if random.random() < 0.5:
+                    # Flag nobody
+                    h_flagging_decisions[h.id] = set()
+                else:
+                    # Flag random IGs (including some correct ones)
+                    num_to_flag = random.randint(0, len(ig_votes) // 4)
+                    h_flagging_decisions[h.id] = set(random.sample(list(ig_votes.keys()), num_to_flag))
+                
+                self.log_event(f"H{h.id} acting Byzantine - flagged: {h_flagging_decisions[h.id]}")
+                self.byzantine_attempts.append({
+                    'round': self.round,
+                    'participant': h.id,
+                    'role': 'H',
+                    'caught': False  # Will be updated in peer review
+                })
+            else:
+                # Honest H - flags IGs who voted differently from majority
+                # Apply detection rate (might miss some due to false negatives)
+                flagged = set()
+                for ig_id in igs_to_flag:
+                    if random.random() < (1 - self.params['false_negative_rate']):
+                        flagged.add(ig_id)
+                h_flagging_decisions[h.id] = flagged
+                self.log_event(f"H{h.id} (honest) flagged: {flagged}")
+        
+        # Step 2: H validators peer review each other's flagging decisions
+        # For each H, check if their flagging matches what the majority of Hs flagged
+        for h in h_validators:
+            # Count how many Hs flagged each IG
+            ig_flag_counts = {}
+            for other_h_id, flagged_igs in h_flagging_decisions.items():
+                for ig_id in flagged_igs:
+                    ig_flag_counts[ig_id] = ig_flag_counts.get(ig_id, 0) + 1
+            
+            # Determine majority threshold (2 out of 3 Hs)
+            majority_threshold = len(h_validators) // 2 + 1
+            
+            # IGs that majority of Hs flagged
+            majority_flagged = {ig_id for ig_id, count in ig_flag_counts.items() if count >= majority_threshold}
+            
+            # Check if this H's decisions match the majority
+            h_flagged = h_flagging_decisions[h.id]
+            
+            # Byzantine behavior: flagging IGs that shouldn't be flagged or not flagging ones that should be
+            false_positives = h_flagged - igs_to_flag  # Flagged innocent IGs
+            false_negatives = igs_to_flag - h_flagged  # Failed to flag guilty IGs
+            
+            # If H's flagging significantly deviates from what they should have flagged, they're Byzantine
+            if len(false_positives) > 0 or len(false_negatives) > len(igs_to_flag) * 0.5:
+                # This H is Byzantine - check if caught by peer review
+                if h.is_byzantine and random.random() < (1 - self.params['false_negative_rate']):
+                    # Caught by peer review!
+                    h.caught_byzantine = True
+                    h.stake_locked = 0  # Lose stake
+                    h.reputation = 0
+                    self.log_event(f"H{h.id} caught being Byzantine by peer review! Stake slashed.")
+                    
+                    # Update the Byzantine attempt record
+                    for attempt in self.byzantine_attempts:
+                        if attempt['round'] == self.round and attempt['participant'] == h.id and attempt['role'] == 'H':
+                            attempt['caught'] = True
+                            break
+        
+        # Step 3: Apply the majority decision on which IGs to punish
+        # IGs that majority of Hs flagged get punished
+        ig_flag_counts = {}
+        for h_id, flagged_igs in h_flagging_decisions.items():
+            for ig_id in flagged_igs:
+                ig_flag_counts[ig_id] = ig_flag_counts.get(ig_id, 0) + 1
+        
+        majority_threshold = len(h_validators) // 2 + 1
+        for ig_id, flag_count in ig_flag_counts.items():
+            if flag_count >= majority_threshold:
+                ig = self.participants[ig_id]
+                if not ig.caught_byzantine:
+                    ig.caught_byzantine = True
+                    ig.stake_locked = 0  # Lose stake
+                    ig.reputation = 0  # Reset reputation
+                    self.log_event(f"IG{ig.id} caught by majority vote of H validators! Stake slashed.")
+                    self.recent_byzantine_catches += 1
+                    
+                    # Update the Byzantine attempt record
+                    for attempt in self.byzantine_attempts:
+                        if attempt['round'] == self.round and attempt['participant'] == ig.id:
+                            attempt['caught'] = True
+                            break
+        
+        self.log_event(f"H validators decided: {majority_candidate} (votes: {vote_counts})")
+        return majority_candidate
     
     async def _validator_ig_work(self):
         """Validators must spend minimum quota on IG work"""
@@ -319,78 +417,121 @@ class NashSimulation:
             
             self.log_event(f"H{h.id} completed mandatory IG work, earned ${ig_work_reward:.5f}")
     
-    async def _ig_voting_phase(self) -> Dict[str, int]:
+    async def _ig_voting_phase(self) -> tuple[Dict[str, int], Dict[int, str]]:
         """IGs (non-H participants this round) generate insights and vote"""
         ig_participants = [p for p in self.participants if p.current_round_role == "IG"]
         candidates = ["Candidate A", "Candidate B", "Candidate C"]
         vote_counts = {c: 0 for c in candidates}
+        ig_votes = {}  # Track individual votes for Byzantine detection
         
         print(f"Starting IG voting phase with {len(ig_participants)} IGs")
         
         for i, ig in enumerate(ig_participants):
             print(f"  Processing IG {ig.id} ({i+1}/{len(ig_participants)})")
-            # Decide if IG will be honest or malicious
-            if ig.is_byzantine and not ig.caught_byzantine:
-                # Byzantine behavior - vote randomly or maliciously
-                vote = random.choice(candidates)
-                ig.add_history(f"Voted maliciously for {vote}")
-            else:
-                # Honest voting
-                if self.use_llm:
-                    try:
-                        print(f"    Making LLM call for IG {ig.id}...")
-                        prompt = get_voting_prompt(
-                            config=self.game_config,
-                            participant_id=ig.id,
-                            balance=ig.balance,
-                            reputation=ig.reputation,
-                            round_num=self.current_round,
-                            stake_locked=ig.stake_locked,
-                            recent_byzantine_catches=self.recent_byzantine_catches,
-                            total_igs=len([p for p in self.participants if p.current_round_role == "IG"]),
-                            ranking_data=get_current_rankings(candidates),
-                            participant_history=ig.history
-                        )
-                        response = await self.llm.ainvoke(prompt)
-                        self.llm_calls += 1
-                        print(f"    LLM response received for IG {ig.id}")
-                        # Add N-second delay between LLM calls
-                        await asyncio.sleep(0.5)
-                        decision, reasoning, metadata = extract_decision(response.content, "vote")
-                        
-                        # Log full details
-                        self.logger.info(f"\n{'='*60}")
-                        self.logger.info(f"IG{ig.id} VOTING DECISION (Round {self.round})")
-                        self.logger.info(f"{'='*60}")
-                        self.logger.info(f"Balance: ${ig.balance:.5f}, Reputation: {ig.reputation}")
-                        self.logger.info(f"\nPROMPT:\n{prompt}")
-                        self.logger.info(f"\nRESPONSE:\n{response.content}")
-                        self.logger.info(f"\nDECISION: {decision}")
-                        self.logger.info(f"REASONING: {reasoning}")
-                        self.logger.info(f"METADATA: {metadata}")
-                        self.logger.info(f"{'='*60}\n")
-                        vote = random.choice(candidates) if decision != "honest" else max(candidates, key=lambda c: get_current_rankings(candidates)[c])
-                    except Exception as e:
-                        self.logger.error(f"LLM error for IG{ig.id}: {e}")
-                        vote = random.choice(candidates)
-                else:
-                    # Simulate honest voting - prefer higher ranked candidates
+            
+            # Default values
+            decision_type = "honest"
+            vote = random.choice(candidates)
+            
+            if self.use_llm:
+                try:
+                    print(f"    Making LLM call for IG {ig.id}...")
+                    # Get persona information
+                    persona_description = self.persona_manager.get_persona_description(ig.id)
+                    persona_trait = self.persona_manager.get_persona_trait(ig.id)
+                    
+                    prompt = get_voting_prompt(
+                        config=self.game_config,
+                        participant_id=ig.id,
+                        balance=ig.balance,
+                        reputation=ig.reputation,
+                        round_num=self.current_round,
+                        stake_locked=ig.stake_locked,
+                        recent_byzantine_catches=self.recent_byzantine_catches,
+                        total_igs=len([p for p in self.participants if p.current_round_role == "IG"]),
+                        ranking_data=get_current_rankings(candidates),
+                        participant_history=ig.history,
+                        persona_description=persona_description,
+                        persona_trait=persona_trait
+                    )
+                    response = await self.llm.ainvoke(prompt)
+                    self.llm_calls += 1
+                    print(f"    LLM response received for IG {ig.id}")
+                    # Add N-second delay between LLM calls
+                    await asyncio.sleep(0.2)
+                    decision_type, reasoning, metadata = extract_decision(response.content, "vote")
+                    
+                    # Log full details
+                    self.logger.info(f"\n{'='*60}")
+                    self.logger.info(f"IG{ig.id} VOTING DECISION (Round {self.round})")
+                    self.logger.info(f"{'='*60}")
+                    self.logger.info(f"Balance: ${ig.balance:.5f}, Reputation: {ig.reputation}")
+                    self.logger.info(f"\nPROMPT:\n{prompt}")
+                    self.logger.info(f"\nRESPONSE:\n{response.content}")
+                    self.logger.info(f"\nDECISION: {decision_type}")
+                    self.logger.info(f"REASONING: {reasoning}")
+                    self.logger.info(f"METADATA: {metadata}")
+                    self.logger.info(f"{'='*60}\n")
+                    
+                    # Set vote based on decision
+                    if decision_type == "honest":
+                        # Vote for highest ranked candidate
+                        rankings = get_current_rankings(candidates)
+                        vote = max(candidates, key=lambda c: rankings[c])
+                        ig.add_history(f"Voted honestly for {vote}")
+                    else:  # byzantine
+                        # Strategic vote - support ally
+                        vote = candidates[1]  # Vote for middle candidate (ally)
+                        ig.add_history(f"Voted strategically for {vote} (ally)")
+                        # Mark as Byzantine based on LLM decision (not random)
+                        ig.is_byzantine = True
+                        # Record Byzantine attempt (detection happens later)
+                        self.byzantine_attempts.append({
+                            'round': self.round,
+                            'participant': ig.id,
+                            'role': 'IG',
+                            'caught': False  # Will be updated by H validators
+                        })
+                            
+                except Exception as e:
+                    self.logger.error(f"LLM error for IG{ig.id}: {e}")
+                    decision_type = "honest"
                     rankings = get_current_rankings(candidates)
                     vote = max(candidates, key=lambda c: rankings[c])
-                
-                ig.add_history(f"Voted honestly for {vote}")
+                    ig.add_history(f"Voted honestly for {vote} (LLM error fallback)")
+            else:
+                # No LLM - simulate with some random Byzantine behavior
+                if random.random() < 0.15:  # 15% chance of Byzantine behavior
+                    decision_type = "byzantine"
+                    vote = random.choice(candidates)
+                    ig.add_history(f"Voted maliciously for {vote}")
+                    ig.is_byzantine = True
+                    self.byzantine_attempts.append({
+                        'round': self.round,
+                        'participant': ig.id,
+                        'role': 'IG',
+                        'caught': False  # Will be updated by H validators
+                    })
+                else:
+                    rankings = get_current_rankings(candidates)
+                    vote = max(candidates, key=lambda c: rankings[c])
+                    ig.add_history(f"Voted honestly for {vote}")
             
             vote_counts[vote] += 1
+            ig_votes[ig.id] = vote  # Track individual vote
             
-            # Pay voting cost
-            cost = self.params['ig_cost_malicious'] if ig.is_byzantine and not ig.caught_byzantine else self.params['ig_cost_honest']
+            # Pay voting cost based on decision
+            if decision_type == "byzantine" and not ig.caught_byzantine:
+                cost = self.params['ig_cost_malicious']
+            else:
+                cost = self.params['ig_cost_honest']
             ig.balance -= cost
             
-            # Honest IGs get reputation
-            if not (ig.is_byzantine and not ig.caught_byzantine):
+            # Honest behavior gets reputation (Byzantine detection happens later)
+            if decision_type == "honest":
                 ig.reputation += self.params['reputation_reward']
         
-        return vote_counts
+        return vote_counts, ig_votes
     
     async def _h_decision_phase(self, active_h: Participant, vote_counts: Dict[str, int]) -> str:
         """Active H makes decision based on votes"""
@@ -626,6 +767,11 @@ class NashSimulation:
         # With temporary roles, simplified validation
         avg_participant_earnings = sum(p.total_earnings for p in self.participants) / len(self.participants) / self.round if self.round > 0 else 0
         
+        # Calculate actual Byzantine detection rate
+        total_byzantine_attempts = len(self.byzantine_attempts)
+        byzantine_caught = len([b for b in self.byzantine_attempts if b['caught']])
+        actual_detection_rate = byzantine_caught / total_byzantine_attempts if total_byzantine_attempts > 0 else 0
+        
         validation = {
             'continuous_ig_participation': True,  # All participants can participate
             'regular_promotions': False,  # No longer applicable
@@ -637,7 +783,7 @@ class NashSimulation:
             'h_avg_profit_per_round': avg_participant_earnings,
             'ig_avg_profit_per_round': avg_participant_earnings,
             'expected_h_profit_with_solution': self.params.get('expected_h_profit_with_solution', 0.005),
-            'byzantine_detection_rate': 1.0,  # For now
+            'byzantine_detection_rate': actual_detection_rate,
             'all_participants_active': all(p.total_earnings > 0 for p in self.participants),
         }
         
