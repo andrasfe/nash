@@ -1,0 +1,7495 @@
+{
+  "parameters": {
+    "n_total": 100,
+    "n_h_initial": 3,
+    "n_ig_initial": 97,
+    "stake_ig": 4.84,
+    "stake_h": 161.28,
+    "initial_balance": 200.0,
+    "ig_cost_honest": 0.0004,
+    "ig_cost_malicious": 0.0002,
+    "h_cost_honest": 0.0001,
+    "h_cost_malicious": 0.0008,
+    "h_reward": 0.16,
+    "h_selection_prob": 0.03,
+    "ig_multiplier": 40,
+    "min_ig_quota": 0.25,
+    "h_bonus": 0.002,
+    "reputation_impact": 0.15,
+    "reputation_reward": 1,
+    "R": 15,
+    "X": 15,
+    "false_negative_rate": 0.02,
+    "expected_ig_profit": 7.999999999999999e-05,
+    "expected_h_profit_base": 0.004699999999999999,
+    "expected_h_profit_with_solution": 0.004624999999999999,
+    "profit_ratio": 58.75,
+    "num_rounds": 100
+  },
+  "summary": {
+    "total_rounds": 100,
+    "total_participants": 100,
+    "final_h_count": 3,
+    "final_ig_count": 97,
+    "total_promotions": 0,
+    "total_byzantine_attempts": 1038,
+    "byzantine_caught": 91,
+    "llm_calls": 9700
+  },
+  "final_state": {
+    "h_avg_balance": 195.25630839999863,
+    "ig_avg_balance": 195.25630839999863,
+    "h_avg_earnings": 0.13559039999999997,
+    "ig_avg_earnings": 0.13559039999999997,
+    "max_reputation": 98,
+    "participants_promoted": []
+  },
+  "rounds_data": [
+    {
+      "round": 1,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.2146,
+      "avg_ig_balance": 195.1596923711343,
+      "avg_h_earnings": 0.054799999999999995,
+      "avg_ig_earnings": 7.175257731958777e-05,
+      "max_reputation": 1,
+      "n_byzantine_active": 0,
+      "llm_calls": 97
+    },
+    {
+      "round": 2,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.19631333333328,
+      "avg_ig_balance": 195.16107340206182,
+      "avg_h_earnings": 0.036879999999999996,
+      "avg_ig_earnings": 0.0018301030927834994,
+      "max_reputation": 2,
+      "n_byzantine_active": 1,
+      "llm_calls": 194
+    },
+    {
+      "round": 3,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.21395999999996,
+      "avg_ig_balance": 195.16188639175252,
+      "avg_h_earnings": 0.05496,
+      "avg_ig_earnings": 0.003027628865979396,
+      "max_reputation": 3,
+      "n_byzantine_active": 1,
+      "llm_calls": 291
+    },
+    {
+      "round": 4,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.21363999999994,
+      "avg_ig_balance": 195.16325051546372,
+      "avg_h_earnings": 0.05504,
+      "avg_ig_earnings": 0.004779381443298961,
+      "max_reputation": 4,
+      "n_byzantine_active": 0,
+      "llm_calls": 388
+    },
+    {
+      "round": 5,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.21331999999992,
+      "avg_ig_balance": 195.16461092783518,
+      "avg_h_earnings": 0.05512,
+      "avg_ig_earnings": 0.006529484536082446,
+      "max_reputation": 5,
+      "n_byzantine_active": 0,
+      "llm_calls": 485
+    },
+    {
+      "round": 6,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.19503333333327,
+      "avg_ig_balance": 195.16596845360806,
+      "avg_h_earnings": 0.037200000000000004,
+      "avg_ig_earnings": 0.008278762886597959,
+      "max_reputation": 6,
+      "n_byzantine_active": 0,
+      "llm_calls": 582
+    },
+    {
+      "round": 7,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.19471333333323,
+      "avg_ig_balance": 195.16676742268027,
+      "avg_h_earnings": 0.03728,
+      "avg_ig_earnings": 0.009470515463917526,
+      "max_reputation": 7,
+      "n_byzantine_active": 0,
+      "llm_calls": 679
+    },
+    {
+      "round": 8,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.1943933333332,
+      "avg_ig_balance": 195.1675655670098,
+      "avg_h_earnings": 0.03736,
+      "avg_ig_earnings": 0.010661443298969057,
+      "max_reputation": 8,
+      "n_byzantine_active": 0,
+      "llm_calls": 776
+    },
+    {
+      "round": 9,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.21203999999986,
+      "avg_ig_balance": 195.1683628865978,
+      "avg_h_earnings": 0.055439999999999996,
+      "avg_ig_earnings": 0.011851546391752602,
+      "max_reputation": 9,
+      "n_byzantine_active": 0,
+      "llm_calls": 873
+    },
+    {
+      "round": 10,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.21171999999987,
+      "avg_ig_balance": 195.16971587628888,
+      "avg_h_earnings": 0.05551999999999999,
+      "avg_ig_earnings": 0.01359835051546388,
+      "max_reputation": 10,
+      "n_byzantine_active": 0,
+      "llm_calls": 970
+    },
+    {
+      "round": 11,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.19343333333316,
+      "avg_ig_balance": 195.17107010309275,
+      "avg_h_earnings": 0.037599999999999995,
+      "avg_ig_earnings": 0.01534432989690722,
+      "max_reputation": 11,
+      "n_byzantine_active": 0,
+      "llm_calls": 1067
+    },
+    {
+      "round": 12,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.2110799999998,
+      "avg_ig_balance": 195.1718657731958,
+      "avg_h_earnings": 0.05568,
+      "avg_ig_earnings": 0.01653278350515466,
+      "max_reputation": 12,
+      "n_byzantine_active": 0,
+      "llm_calls": 1164
+    },
+    {
+      "round": 13,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.19279333333313,
+      "avg_ig_balance": 195.17321711340182,
+      "avg_h_earnings": 0.037759999999999995,
+      "avg_ig_earnings": 0.01827793814432988,
+      "max_reputation": 13,
+      "n_byzantine_active": 0,
+      "llm_calls": 1261
+    },
+    {
+      "round": 14,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.21043999999975,
+      "avg_ig_balance": 195.17401195876275,
+      "avg_h_earnings": 0.05584,
+      "avg_ig_earnings": 0.019465567010309267,
+      "max_reputation": 14,
+      "n_byzantine_active": 0,
+      "llm_calls": 1358
+    },
+    {
+      "round": 15,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.21011999999976,
+      "avg_ig_balance": 195.1753624742266,
+      "avg_h_earnings": 0.05592,
+      "avg_ig_earnings": 0.021209896907216447,
+      "max_reputation": 15,
+      "n_byzantine_active": 0,
+      "llm_calls": 1455
+    },
+    {
+      "round": 16,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.19183333333308,
+      "avg_ig_balance": 195.1767129896905,
+      "avg_h_earnings": 0.038,
+      "avg_ig_earnings": 0.0229542268041237,
+      "max_reputation": 16,
+      "n_byzantine_active": 0,
+      "llm_calls": 1552
+    },
+    {
+      "round": 17,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.19151333333306,
+      "avg_ig_balance": 195.1775082474222,
+      "avg_h_earnings": 0.038079999999999996,
+      "avg_ig_earnings": 0.024140206185566993,
+      "max_reputation": 17,
+      "n_byzantine_active": 0,
+      "llm_calls": 1649
+    },
+    {
+      "round": 18,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.20915999999974,
+      "avg_ig_balance": 195.17830061855653,
+      "avg_h_earnings": 0.05616000000000001,
+      "avg_ig_earnings": 0.025325360824742293,
+      "max_reputation": 18,
+      "n_byzantine_active": 0,
+      "llm_calls": 1746
+    },
+    {
+      "round": 19,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.19087333333303,
+      "avg_ig_balance": 195.17964865979343,
+      "avg_h_earnings": 0.038239999999999996,
+      "avg_ig_earnings": 0.027067216494845375,
+      "max_reputation": 19,
+      "n_byzantine_active": 0,
+      "llm_calls": 1843
+    },
+    {
+      "round": 20,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.20851999999968,
+      "avg_ig_balance": 195.18044020618558,
+      "avg_h_earnings": 0.05632,
+      "avg_ig_earnings": 0.028251546391752515,
+      "max_reputation": 20,
+      "n_byzantine_active": 0,
+      "llm_calls": 1940
+    },
+    {
+      "round": 21,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.17226666666633,
+      "avg_ig_balance": 195.18178742267992,
+      "avg_h_earnings": 0.020399999999999998,
+      "avg_ig_earnings": 0.02999257731958761,
+      "max_reputation": 21,
+      "n_byzantine_active": 0,
+      "llm_calls": 2037
+    },
+    {
+      "round": 22,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.20787999999962,
+      "avg_ig_balance": 195.18202164948428,
+      "avg_h_earnings": 0.05648,
+      "avg_ig_earnings": 0.030618556701030912,
+      "max_reputation": 22,
+      "n_byzantine_active": 0,
+      "llm_calls": 2134
+    },
+    {
+      "round": 23,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.20755999999963,
+      "avg_ig_balance": 195.18336845360776,
+      "avg_h_earnings": 0.05656,
+      "avg_ig_earnings": 0.03235711340206187,
+      "max_reputation": 23,
+      "n_byzantine_active": 0,
+      "llm_calls": 2231
+    },
+    {
+      "round": 24,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.18927333333295,
+      "avg_ig_balance": 195.184713195876,
+      "avg_h_earnings": 0.03864,
+      "avg_ig_earnings": 0.03409567010309273,
+      "max_reputation": 24,
+      "n_byzantine_active": 0,
+      "llm_calls": 2328
+    },
+    {
+      "round": 25,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.20759999999962,
+      "avg_ig_balance": 195.18436907216446,
+      "avg_h_earnings": 0.05719999999999995,
+      "avg_ig_earnings": 0.034148453608247364,
+      "max_reputation": 24,
+      "n_byzantine_active": 0,
+      "llm_calls": 2425
+    },
+    {
+      "round": 26,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.2615199999996,
+      "avg_ig_balance": 195.18403381443267,
+      "avg_h_earnings": 0.11151999999999991,
+      "avg_ig_earnings": 0.03420701030927833,
+      "max_reputation": 25,
+      "n_byzantine_active": 0,
+      "llm_calls": 2522
+    },
+    {
+      "round": 27,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.22526666666624,
+      "avg_ig_balance": 195.1853760824739,
+      "avg_h_earnings": 0.07559999999999993,
+      "avg_ig_earnings": 0.03594309278350516,
+      "max_reputation": 26,
+      "n_byzantine_active": 0,
+      "llm_calls": 2619
+    },
+    {
+      "round": 28,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.26087999999956,
+      "avg_ig_balance": 195.18560536082427,
+      "avg_h_earnings": 0.11167999999999993,
+      "avg_ig_earnings": 0.03656412371134021,
+      "max_reputation": 27,
+      "n_byzantine_active": 0,
+      "llm_calls": 2716
+    },
+    {
+      "round": 29,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.2603266666662,
+      "avg_ig_balance": 195.1869459793812,
+      "avg_h_earnings": 0.11175999999999993,
+      "avg_ig_earnings": 0.03829855670103085,
+      "max_reputation": 28,
+      "n_byzantine_active": 1,
+      "llm_calls": 2813
+    },
+    {
+      "round": 30,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.24227333333286,
+      "avg_ig_balance": 195.1882793814428,
+      "avg_h_earnings": 0.09383999999999992,
+      "avg_ig_earnings": 0.04003298969072157,
+      "max_reputation": 29,
+      "n_byzantine_active": 1,
+      "llm_calls": 2910
+    },
+    {
+      "round": 31,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.24195333333284,
+      "avg_ig_balance": 195.18906350515422,
+      "avg_h_earnings": 0.09391999999999993,
+      "avg_ig_earnings": 0.04120989690721645,
+      "max_reputation": 30,
+      "n_byzantine_active": 1,
+      "llm_calls": 3007
+    },
+    {
+      "round": 32,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.24163333333283,
+      "avg_ig_balance": 195.18984680412305,
+      "avg_h_earnings": 0.09399999999999993,
+      "avg_ig_earnings": 0.04238597938144327,
+      "max_reputation": 31,
+      "n_byzantine_active": 1,
+      "llm_calls": 3104
+    },
+    {
+      "round": 33,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.24131333333284,
+      "avg_ig_balance": 195.1906292783501,
+      "avg_h_earnings": 0.09407999999999994,
+      "avg_ig_earnings": 0.043561237113402054,
+      "max_reputation": 32,
+      "n_byzantine_active": 1,
+      "llm_calls": 3201
+    },
+    {
+      "round": 34,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.25895999999946,
+      "avg_ig_balance": 195.1914109278344,
+      "avg_h_earnings": 0.11215999999999993,
+      "avg_ig_earnings": 0.04473567010309274,
+      "max_reputation": 33,
+      "n_byzantine_active": 1,
+      "llm_calls": 3298
+    },
+    {
+      "round": 35,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.25863999999945,
+      "avg_ig_balance": 195.19274824742203,
+      "avg_h_earnings": 0.11223999999999994,
+      "avg_ig_earnings": 0.04646680412371129,
+      "max_reputation": 34,
+      "n_byzantine_active": 1,
+      "llm_calls": 3395
+    },
+    {
+      "round": 36,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.24035333333276,
+      "avg_ig_balance": 195.19408556700955,
+      "avg_h_earnings": 0.09431999999999995,
+      "avg_ig_earnings": 0.04819793814432984,
+      "max_reputation": 35,
+      "n_byzantine_active": 1,
+      "llm_calls": 3492
+    },
+    {
+      "round": 37,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.24003333333272,
+      "avg_ig_balance": 195.19486639175213,
+      "avg_h_earnings": 0.09439999999999993,
+      "avg_ig_earnings": 0.04937154639175249,
+      "max_reputation": 36,
+      "n_byzantine_active": 1,
+      "llm_calls": 3589
+    },
+    {
+      "round": 38,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.2576799999994,
+      "avg_ig_balance": 195.19564762886546,
+      "avg_h_earnings": 0.11247999999999996,
+      "avg_ig_earnings": 0.05054350515463912,
+      "max_reputation": 37,
+      "n_byzantine_active": 1,
+      "llm_calls": 3686
+    },
+    {
+      "round": 39,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.2393933333327,
+      "avg_ig_balance": 195.19698247422642,
+      "avg_h_earnings": 0.09455999999999994,
+      "avg_ig_earnings": 0.05227216494845352,
+      "max_reputation": 38,
+      "n_byzantine_active": 1,
+      "llm_calls": 3783
+    },
+    {
+      "round": 40,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.25703999999936,
+      "avg_ig_balance": 195.19776082474147,
+      "avg_h_earnings": 0.11263999999999992,
+      "avg_ig_earnings": 0.053443298969072114,
+      "max_reputation": 39,
+      "n_byzantine_active": 1,
+      "llm_calls": 3880
+    },
+    {
+      "round": 41,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.2387533333327,
+      "avg_ig_balance": 195.19909484536018,
+      "avg_h_earnings": 0.09471999999999993,
+      "avg_ig_earnings": 0.0551711340206185,
+      "max_reputation": 40,
+      "n_byzantine_active": 1,
+      "llm_calls": 3977
+    },
+    {
+      "round": 42,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.23843333333267,
+      "avg_ig_balance": 195.19987237113358,
+      "avg_h_earnings": 0.09479999999999994,
+      "avg_ig_earnings": 0.05634144329896904,
+      "max_reputation": 41,
+      "n_byzantine_active": 1,
+      "llm_calls": 4074
+    },
+    {
+      "round": 43,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.23811333333265,
+      "avg_ig_balance": 195.20064907216428,
+      "avg_h_earnings": 0.09487999999999995,
+      "avg_ig_earnings": 0.05751092783505149,
+      "max_reputation": 41,
+      "n_byzantine_active": 1,
+      "llm_calls": 4171
+    },
+    {
+      "round": 44,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.31067999999928,
+      "avg_ig_balance": 195.19972639175208,
+      "avg_h_earnings": 0.16767999999999986,
+      "avg_ig_earnings": 0.0569872164948453,
+      "max_reputation": 42,
+      "n_byzantine_active": 1,
+      "llm_calls": 4268
+    },
+    {
+      "round": 45,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.3103599999993,
+      "avg_ig_balance": 195.20105793814363,
+      "avg_h_earnings": 0.16775999999999988,
+      "avg_ig_earnings": 0.05871257731958753,
+      "max_reputation": 43,
+      "n_byzantine_active": 1,
+      "llm_calls": 4365
+    },
+    {
+      "round": 46,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.31003999999928,
+      "avg_ig_balance": 195.20238948453536,
+      "avg_h_earnings": 0.16783999999999988,
+      "avg_ig_earnings": 0.06043793814432989,
+      "max_reputation": 44,
+      "n_byzantine_active": 1,
+      "llm_calls": 4462
+    },
+    {
+      "round": 47,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.2917533333326,
+      "avg_ig_balance": 195.20372226804045,
+      "avg_h_earnings": 0.14991999999999986,
+      "avg_ig_earnings": 0.062162474226804085,
+      "max_reputation": 45,
+      "n_byzantine_active": 1,
+      "llm_calls": 4559
+    },
+    {
+      "round": 48,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.30939999999927,
+      "avg_ig_balance": 195.20449649484476,
+      "avg_h_earnings": 0.16799999999999984,
+      "avg_ig_earnings": 0.06332948453608236,
+      "max_reputation": 46,
+      "n_byzantine_active": 1,
+      "llm_calls": 4656
+    },
+    {
+      "round": 49,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.30907999999923,
+      "avg_ig_balance": 195.2058263917518,
+      "avg_h_earnings": 0.16807999999999987,
+      "avg_ig_earnings": 0.0650531958762886,
+      "max_reputation": 47,
+      "n_byzantine_active": 1,
+      "llm_calls": 4753
+    },
+    {
+      "round": 50,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.29079333333254,
+      "avg_ig_balance": 195.20715628865898,
+      "avg_h_earnings": 0.15015999999999988,
+      "avg_ig_earnings": 0.06677690721649475,
+      "max_reputation": 48,
+      "n_byzantine_active": 1,
+      "llm_calls": 4850
+    },
+    {
+      "round": 51,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.3084399999992,
+      "avg_ig_balance": 195.20792969072073,
+      "avg_h_earnings": 0.16823999999999986,
+      "avg_ig_earnings": 0.06794309278350517,
+      "max_reputation": 49,
+      "n_byzantine_active": 1,
+      "llm_calls": 4947
+    },
+    {
+      "round": 52,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.29015333333254,
+      "avg_ig_balance": 195.20925876288584,
+      "avg_h_earnings": 0.1503199999999999,
+      "avg_ig_earnings": 0.06966597938144323,
+      "max_reputation": 50,
+      "n_byzantine_active": 1,
+      "llm_calls": 5044
+    },
+    {
+      "round": 53,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.30779999999916,
+      "avg_ig_balance": 195.2100313402055,
+      "avg_h_earnings": 0.16839999999999988,
+      "avg_ig_earnings": 0.07083134020618545,
+      "max_reputation": 51,
+      "n_byzantine_active": 1,
+      "llm_calls": 5141
+    },
+    {
+      "round": 54,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.2715466666658,
+      "avg_ig_balance": 195.21135958762818,
+      "avg_h_earnings": 0.1324799999999999,
+      "avg_ig_earnings": 0.07255340206185559,
+      "max_reputation": 52,
+      "n_byzantine_active": 1,
+      "llm_calls": 5238
+    },
+    {
+      "round": 55,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.30715999999913,
+      "avg_ig_balance": 195.21157484535988,
+      "avg_h_earnings": 0.1685599999999999,
+      "avg_ig_earnings": 0.07316041237113396,
+      "max_reputation": 53,
+      "n_byzantine_active": 1,
+      "llm_calls": 5335
+    },
+    {
+      "round": 56,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.30683999999914,
+      "avg_ig_balance": 195.2129014432982,
+      "avg_h_earnings": 0.1686399999999999,
+      "avg_ig_earnings": 0.07488082474226798,
+      "max_reputation": 54,
+      "n_byzantine_active": 1,
+      "llm_calls": 5432
+    },
+    {
+      "round": 57,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.2883199999991,
+      "avg_ig_balance": 195.21423525773102,
+      "avg_h_earnings": 0.15071999999999988,
+      "avg_ig_earnings": 0.07660123711340193,
+      "max_reputation": 55,
+      "n_byzantine_active": 0,
+      "llm_calls": 5529
+    },
+    {
+      "round": 58,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.3611199999991,
+      "avg_ig_balance": 195.213299587628,
+      "avg_h_earnings": 0.2235199999999998,
+      "avg_ig_earnings": 0.07607175257731955,
+      "max_reputation": 56,
+      "n_byzantine_active": 0,
+      "llm_calls": 5626
+    },
+    {
+      "round": 59,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.3607999999991,
+      "avg_ig_balance": 195.214625360824,
+      "avg_h_earnings": 0.2235999999999998,
+      "avg_ig_earnings": 0.07779134020618546,
+      "max_reputation": 57,
+      "n_byzantine_active": 0,
+      "llm_calls": 5723
+    },
+    {
+      "round": 60,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.3425133333324,
+      "avg_ig_balance": 195.21595113401972,
+      "avg_h_earnings": 0.20567999999999984,
+      "avg_ig_earnings": 0.07951092783505152,
+      "max_reputation": 58,
+      "n_byzantine_active": 0,
+      "llm_calls": 5820
+    },
+    {
+      "round": 61,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.3242266666657,
+      "avg_ig_balance": 195.21672041237034,
+      "avg_h_earnings": 0.18775999999999982,
+      "avg_ig_earnings": 0.08067298969072155,
+      "max_reputation": 59,
+      "n_byzantine_active": 0,
+      "llm_calls": 5917
+    },
+    {
+      "round": 62,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.34187333333236,
+      "avg_ig_balance": 195.21693237113305,
+      "avg_h_earnings": 0.2058399999999998,
+      "avg_ig_earnings": 0.08127670103092768,
+      "max_reputation": 60,
+      "n_byzantine_active": 0,
+      "llm_calls": 6014
+    },
+    {
+      "round": 63,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.35951999999898,
+      "avg_ig_balance": 195.2176991752569,
+      "avg_h_earnings": 0.2239199999999998,
+      "avg_ig_earnings": 0.08243628865979374,
+      "max_reputation": 61,
+      "n_byzantine_active": 0,
+      "llm_calls": 6111
+    },
+    {
+      "round": 64,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.359199999999,
+      "avg_ig_balance": 195.21902164948352,
+      "avg_h_earnings": 0.22399999999999984,
+      "avg_ig_earnings": 0.0841525773195875,
+      "max_reputation": 62,
+      "n_byzantine_active": 0,
+      "llm_calls": 6208
+    },
+    {
+      "round": 65,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.3409133333323,
+      "avg_ig_balance": 195.22034412371045,
+      "avg_h_earnings": 0.20607999999999982,
+      "avg_ig_earnings": 0.08586886597938136,
+      "max_reputation": 63,
+      "n_byzantine_active": 0,
+      "llm_calls": 6305
+    },
+    {
+      "round": 66,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.35855999999896,
+      "avg_ig_balance": 195.22111010309172,
+      "avg_h_earnings": 0.22415999999999983,
+      "avg_ig_earnings": 0.08702762886597926,
+      "max_reputation": 64,
+      "n_byzantine_active": 0,
+      "llm_calls": 6402
+    },
+    {
+      "round": 67,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.35823999999897,
+      "avg_ig_balance": 195.22243175257643,
+      "avg_h_earnings": 0.22423999999999986,
+      "avg_ig_earnings": 0.08874309278350506,
+      "max_reputation": 65,
+      "n_byzantine_active": 0,
+      "llm_calls": 6499
+    },
+    {
+      "round": 68,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.3219866666656,
+      "avg_ig_balance": 195.22375340206085,
+      "avg_h_earnings": 0.18831999999999982,
+      "avg_ig_earnings": 0.09045855670103076,
+      "max_reputation": 66,
+      "n_byzantine_active": 0,
+      "llm_calls": 6596
+    },
+    {
+      "round": 69,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.3575999999989,
+      "avg_ig_balance": 195.2239620618547,
+      "avg_h_earnings": 0.22439999999999985,
+      "avg_ig_earnings": 0.09105896907216486,
+      "max_reputation": 67,
+      "n_byzantine_active": 0,
+      "llm_calls": 6693
+    },
+    {
+      "round": 70,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.35829999999888,
+      "avg_ig_balance": 195.22358350515367,
+      "avg_h_earnings": 0.22519999999999976,
+      "avg_ig_earnings": 0.09108041237113393,
+      "max_reputation": 68,
+      "n_byzantine_active": 0,
+      "llm_calls": 6790
+    },
+    {
+      "round": 71,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.4118799999989,
+      "avg_ig_balance": 195.22323402061758,
+      "avg_h_earnings": 0.27927999999999975,
+      "avg_ig_earnings": 0.09112164948453597,
+      "max_reputation": 69,
+      "n_byzantine_active": 0,
+      "llm_calls": 6887
+    },
+    {
+      "round": 72,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.41155999999887,
+      "avg_ig_balance": 195.22455154639053,
+      "avg_h_earnings": 0.2793599999999998,
+      "avg_ig_earnings": 0.09283298969072155,
+      "max_reputation": 70,
+      "n_byzantine_active": 0,
+      "llm_calls": 6984
+    },
+    {
+      "round": 73,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.37530666666552,
+      "avg_ig_balance": 195.22586907216385,
+      "avg_h_earnings": 0.24343999999999977,
+      "avg_ig_earnings": 0.09454432989690705,
+      "max_reputation": 71,
+      "n_byzantine_active": 0,
+      "llm_calls": 7081
+    },
+    {
+      "round": 74,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.37498666666548,
+      "avg_ig_balance": 195.2260736082463,
+      "avg_h_earnings": 0.24351999999999974,
+      "avg_ig_earnings": 0.09514061855670095,
+      "max_reputation": 72,
+      "n_byzantine_active": 0,
+      "llm_calls": 7178
+    },
+    {
+      "round": 75,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.41059999999882,
+      "avg_ig_balance": 195.22627649484437,
+      "avg_h_earnings": 0.2795999999999998,
+      "avg_ig_earnings": 0.09573525773195866,
+      "max_reputation": 73,
+      "n_byzantine_active": 0,
+      "llm_calls": 7275
+    },
+    {
+      "round": 76,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.4102799999988,
+      "avg_ig_balance": 195.2275907216484,
+      "avg_h_earnings": 0.2796799999999998,
+      "avg_ig_earnings": 0.097443298969072,
+      "max_reputation": 74,
+      "n_byzantine_active": 0,
+      "llm_calls": 7372
+    },
+    {
+      "round": 77,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.4099599999988,
+      "avg_ig_balance": 195.2289049484525,
+      "avg_h_earnings": 0.2797599999999998,
+      "avg_ig_earnings": 0.09915134020618543,
+      "max_reputation": 75,
+      "n_byzantine_active": 0,
+      "llm_calls": 7469
+    },
+    {
+      "round": 78,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.4096399999988,
+      "avg_ig_balance": 195.2302191752565,
+      "avg_h_earnings": 0.2798399999999998,
+      "avg_ig_earnings": 0.10085938144329894,
+      "max_reputation": 76,
+      "n_byzantine_active": 0,
+      "llm_calls": 7566
+    },
+    {
+      "round": 79,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.42762666666542,
+      "avg_ig_balance": 195.23096721649378,
+      "avg_h_earnings": 0.29815999999999987,
+      "avg_ig_earnings": 0.10200329896907208,
+      "max_reputation": 77,
+      "n_byzantine_active": 0,
+      "llm_calls": 7663
+    },
+    {
+      "round": 80,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.44595333333208,
+      "avg_ig_balance": 195.2311490721639,
+      "avg_h_earnings": 0.31671999999999995,
+      "avg_ig_earnings": 0.10258309278350505,
+      "max_reputation": 78,
+      "n_byzantine_active": 0,
+      "llm_calls": 7760
+    },
+    {
+      "round": 81,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.42766666666543,
+      "avg_ig_balance": 195.2319068041226,
+      "avg_h_earnings": 0.2988,
+      "avg_ig_earnings": 0.10373360824742257,
+      "max_reputation": 79,
+      "n_byzantine_active": 0,
+      "llm_calls": 7857
+    },
+    {
+      "round": 82,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.44531333333205,
+      "avg_ig_balance": 195.23210721649357,
+      "avg_h_earnings": 0.31687999999999994,
+      "avg_ig_earnings": 0.10432577319587621,
+      "max_reputation": 80,
+      "n_byzantine_active": 0,
+      "llm_calls": 7954
+    },
+    {
+      "round": 83,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.44499333333204,
+      "avg_ig_balance": 195.23286247422558,
+      "avg_h_earnings": 0.31695999999999996,
+      "avg_ig_earnings": 0.10547381443298955,
+      "max_reputation": 81,
+      "n_byzantine_active": 0,
+      "llm_calls": 8051
+    },
+    {
+      "round": 84,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.42670666666535,
+      "avg_ig_balance": 195.23361690721535,
+      "avg_h_earnings": 0.29904,
+      "avg_ig_earnings": 0.10662103092783497,
+      "max_reputation": 82,
+      "n_byzantine_active": 0,
+      "llm_calls": 8148
+    },
+    {
+      "round": 85,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.46231999999864,
+      "avg_ig_balance": 195.23381402061736,
+      "avg_h_earnings": 0.33512000000000003,
+      "avg_ig_earnings": 0.10720989690721644,
+      "max_reputation": 83,
+      "n_byzantine_active": 0,
+      "llm_calls": 8245
+    },
+    {
+      "round": 86,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.46199999999865,
+      "avg_ig_balance": 195.2351224742257,
+      "avg_h_earnings": 0.3352,
+      "avg_ig_earnings": 0.10891216494845357,
+      "max_reputation": 84,
+      "n_byzantine_active": 0,
+      "llm_calls": 8342
+    },
+    {
+      "round": 87,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.51659999999865,
+      "avg_ig_balance": 195.23473237113276,
+      "avg_h_earnings": 0.3900000000000001,
+      "avg_ig_earnings": 0.10892206185567002,
+      "max_reputation": 85,
+      "n_byzantine_active": 0,
+      "llm_calls": 8439
+    },
+    {
+      "round": 88,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.498313333332,
+      "avg_ig_balance": 195.23604082474105,
+      "avg_h_earnings": 0.37208000000000013,
+      "avg_ig_earnings": 0.1106243298969071,
+      "max_reputation": 86,
+      "n_byzantine_active": 0,
+      "llm_calls": 8536
+    },
+    {
+      "round": 89,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.5159599999986,
+      "avg_ig_balance": 195.2367927835039,
+      "avg_h_earnings": 0.3901600000000001,
+      "avg_ig_earnings": 0.11176907216494837,
+      "max_reputation": 87,
+      "n_byzantine_active": 0,
+      "llm_calls": 8633
+    },
+    {
+      "round": 90,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.5156399999986,
+      "avg_ig_balance": 195.23810041236976,
+      "avg_h_earnings": 0.3902400000000001,
+      "avg_ig_earnings": 0.11347051546391751,
+      "max_reputation": 88,
+      "n_byzantine_active": 0,
+      "llm_calls": 8730
+    },
+    {
+      "round": 91,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.49735333333192,
+      "avg_ig_balance": 195.2394080412358,
+      "avg_h_earnings": 0.37232000000000004,
+      "avg_ig_earnings": 0.1151719587628866,
+      "max_reputation": 89,
+      "n_byzantine_active": 0,
+      "llm_calls": 8827
+    },
+    {
+      "round": 92,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.56991999999858,
+      "avg_ig_balance": 195.23846061855545,
+      "avg_h_earnings": 0.44512000000000024,
+      "avg_ig_earnings": 0.11462350515463911,
+      "max_reputation": 90,
+      "n_byzantine_active": 0,
+      "llm_calls": 8924
+    },
+    {
+      "round": 93,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.56959999999856,
+      "avg_ig_balance": 195.23976742267922,
+      "avg_h_earnings": 0.44520000000000026,
+      "avg_ig_earnings": 0.1163241237113402,
+      "max_reputation": 91,
+      "n_byzantine_active": 0,
+      "llm_calls": 9021
+    },
+    {
+      "round": 94,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.56927999999854,
+      "avg_ig_balance": 195.24107422680274,
+      "avg_h_earnings": 0.4452800000000002,
+      "avg_ig_earnings": 0.11802474226804123,
+      "max_reputation": 92,
+      "n_byzantine_active": 0,
+      "llm_calls": 9118
+    },
+    {
+      "round": 95,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.56895999999855,
+      "avg_ig_balance": 195.2423810309265,
+      "avg_h_earnings": 0.4453600000000002,
+      "avg_ig_earnings": 0.11972536082474225,
+      "max_reputation": 93,
+      "n_byzantine_active": 0,
+      "llm_calls": 9215
+    },
+    {
+      "round": 96,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.58728666666516,
+      "avg_ig_balance": 195.24255546391603,
+      "avg_h_earnings": 0.46392000000000033,
+      "avg_ig_earnings": 0.12029773195876287,
+      "max_reputation": 94,
+      "n_byzantine_active": 0,
+      "llm_calls": 9312
+    },
+    {
+      "round": 97,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.6232399999985,
+      "avg_ig_balance": 195.24273958762754,
+      "avg_h_earnings": 0.5002400000000004,
+      "avg_ig_earnings": 0.12087670103092782,
+      "max_reputation": 95,
+      "n_byzantine_active": 0,
+      "llm_calls": 9409
+    },
+    {
+      "round": 98,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.62291999999852,
+      "avg_ig_balance": 195.24404556700895,
+      "avg_h_earnings": 0.5003200000000003,
+      "avg_ig_earnings": 0.1225764948453608,
+      "max_reputation": 96,
+      "n_byzantine_active": 0,
+      "llm_calls": 9506
+    },
+    {
+      "round": 99,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.6046333333318,
+      "avg_ig_balance": 195.24535154639034,
+      "avg_h_earnings": 0.48240000000000033,
+      "avg_ig_earnings": 0.12427628865979377,
+      "max_reputation": 97,
+      "n_byzantine_active": 0,
+      "llm_calls": 9603
+    },
+    {
+      "round": 100,
+      "n_h": 3,
+      "n_ig": 97,
+      "avg_h_balance": 195.6046533333318,
+      "avg_ig_balance": 195.24553484535943,
+      "avg_h_earnings": 0.4827200000000003,
+      "avg_ig_earnings": 0.12485443298969066,
+      "max_reputation": 98,
+      "n_byzantine_active": 0,
+      "llm_calls": 9700
+    }
+  ],
+  "promotions": [],
+  "byzantine_attempts": [
+    {
+      "round": 1,
+      "participant": 7,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 1,
+      "participant": 16,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 1,
+      "participant": 20,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 1,
+      "participant": 36,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 1,
+      "participant": 40,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 1,
+      "participant": 44,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 1,
+      "participant": 46,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 1,
+      "participant": 64,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 1,
+      "participant": 68,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 1,
+      "participant": 98,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 2,
+      "participant": 2,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 2,
+      "participant": 15,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 2,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 2,
+      "participant": 19,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 2,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 2,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 2,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 2,
+      "participant": 41,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 2,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 2,
+      "participant": 51,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 2,
+      "participant": 64,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 2,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 2,
+      "participant": 76,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 2,
+      "participant": 91,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 2,
+      "participant": 96,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 2,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 2,
+      "participant": 4,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 3,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 13,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 3,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 17,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 3,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 26,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 3,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 64,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 69,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 3,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 3,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 17,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 41,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 47,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 4,
+      "participant": 64,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 4,
+      "participant": 89,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 4,
+      "participant": 91,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 4,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 13,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 55,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 5,
+      "participant": 64,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 88,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 5,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 5,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 6,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 6,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 88,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 91,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 6,
+      "participant": 24,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 7,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 91,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 7,
+      "participant": 25,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 8,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 13,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 91,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 8,
+      "participant": 29,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 9,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 9,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 91,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 10,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 53,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 11,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 11,
+      "participant": 39,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 12,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 12,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 91,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 13,
+      "participant": 52,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 14,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 17,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 91,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 14,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 17,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 29,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 91,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 15,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 91,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 16,
+      "participant": 63,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 17,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 17,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 17,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 17,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 17,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 17,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 17,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 17,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 17,
+      "participant": 81,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 17,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 17,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 17,
+      "participant": 70,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 18,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 29,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 91,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 18,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 19,
+      "participant": 74,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 20,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 20,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 20,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 20,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 20,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 20,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 20,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 20,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 20,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 20,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 20,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 20,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 21,
+      "participant": 83,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 21,
+      "participant": 84,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 22,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 22,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 22,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 22,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 22,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 22,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 22,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 22,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 22,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 22,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 22,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 22,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 11,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 23,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 23,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 24,
+      "participant": 97,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 25,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 25,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 25,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 25,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 25,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 25,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 25,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 25,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 25,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 25,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 25,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 25,
+      "participant": 99,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 25,
+      "participant": 0,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 26,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 26,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 26,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 26,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 26,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 26,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 26,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 26,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 26,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 26,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 26,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 27,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 27,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 27,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 27,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 27,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 27,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 27,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 27,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 27,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 27,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 27,
+      "participant": 10,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 27,
+      "participant": 12,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 28,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 28,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 28,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 28,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 28,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 28,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 28,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 28,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 28,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 28,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 28,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 29,
+      "participant": 27,
+      "role": "H",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 40,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 30,
+      "participant": 30,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 31,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 31,
+      "participant": 32,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 32,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 32,
+      "participant": 35,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 33,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 33,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 33,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 33,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 33,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 33,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 33,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 33,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 33,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 33,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 33,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 33,
+      "participant": 42,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 34,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 34,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 34,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 34,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 34,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 34,
+      "participant": 29,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 34,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 34,
+      "participant": 47,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 34,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 34,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 34,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 34,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 35,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 36,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 36,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 36,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 36,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 36,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 36,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 36,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 36,
+      "participant": 59,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 37,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 37,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 37,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 37,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 37,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 37,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 37,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 37,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 37,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 37,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 37,
+      "participant": 62,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 38,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 38,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 38,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 38,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 38,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 38,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 38,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 38,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 38,
+      "participant": 92,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 38,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 39,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 39,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 39,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 39,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 39,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 39,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 39,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 39,
+      "participant": 72,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 40,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 40,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 40,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 40,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 40,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 40,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 40,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 40,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 40,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 40,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 41,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 41,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 41,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 41,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 41,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 41,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 41,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 41,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 41,
+      "participant": 85,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 42,
+      "participant": 2,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 42,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 42,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 42,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 42,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 42,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 42,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 42,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 42,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 42,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 42,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 42,
+      "participant": 86,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 43,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 43,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 43,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 43,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 43,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 43,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 43,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 43,
+      "participant": 93,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 44,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 44,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 44,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 44,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 44,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 44,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 44,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 44,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 44,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 45,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 45,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 45,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 45,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 45,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 45,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 45,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 46,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 46,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 46,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 46,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 46,
+      "participant": 26,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 46,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 46,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 46,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 46,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 47,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 47,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 47,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 47,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 47,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 47,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 47,
+      "participant": 49,
+      "role": "IG",
+      "caught": true
+    },
+    {
+      "round": 47,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 47,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 47,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 47,
+      "participant": 28,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 48,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 48,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 48,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 48,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 48,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 48,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 48,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 48,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 48,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 49,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 49,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 49,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 49,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 49,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 49,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 49,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 49,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 49,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 50,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 50,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 50,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 50,
+      "participant": 63,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 50,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 50,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 50,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 50,
+      "participant": 54,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 51,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 51,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 51,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 51,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 52,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 52,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 52,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 52,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 52,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 52,
+      "participant": 65,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 53,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 53,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 53,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 53,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 53,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 53,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 53,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 53,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 54,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 54,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 54,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 54,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 54,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 54,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 54,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 54,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 54,
+      "participant": 73,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 54,
+      "participant": 75,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 55,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 55,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 55,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 55,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 55,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 55,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 55,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 56,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 56,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 56,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 56,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 56,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 56,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 56,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 57,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 57,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 57,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 57,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 57,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 57,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 57,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 57,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 57,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 57,
+      "participant": 27,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 58,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 58,
+      "participant": 15,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 58,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 58,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 58,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 58,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 58,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 58,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 58,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 59,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 59,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 59,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 59,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 59,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 59,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 59,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 59,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 60,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 60,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 60,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 60,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 60,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 60,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 60,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 60,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 60,
+      "participant": 22,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 61,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 61,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 61,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 61,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 61,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 61,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 61,
+      "participant": 23,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 61,
+      "participant": 31,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 62,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 62,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 62,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 62,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 62,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 62,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 62,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 62,
+      "participant": 38,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 63,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 63,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 63,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 63,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 63,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 63,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 63,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 63,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 64,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 64,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 64,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 64,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 64,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 64,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 64,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 64,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 65,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 65,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 65,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 65,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 65,
+      "participant": 92,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 65,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 65,
+      "participant": 60,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 66,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 66,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 66,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 66,
+      "participant": 29,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 66,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 66,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 66,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 66,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 66,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 67,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 67,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 67,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 67,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 67,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 67,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 67,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 67,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 67,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 68,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 68,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 68,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 68,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 68,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 68,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 68,
+      "participant": 80,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 68,
+      "participant": 82,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 69,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 69,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 69,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 69,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 69,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 69,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 69,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 69,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 70,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 70,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 70,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 70,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 70,
+      "participant": 65,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 70,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 70,
+      "participant": 1,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 70,
+      "participant": 3,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 70,
+      "participant": 5,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 71,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 71,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 71,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 71,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 71,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 71,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 71,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 53,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 91,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 72,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 73,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 73,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 73,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 73,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 73,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 73,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 73,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 73,
+      "participant": 93,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 73,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 73,
+      "participant": 37,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 73,
+      "participant": 43,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 74,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 74,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 74,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 74,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 74,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 74,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 74,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 74,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 74,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 74,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 74,
+      "participant": 48,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 74,
+      "participant": 50,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 75,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 75,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 75,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 75,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 75,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 75,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 75,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 76,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 76,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 76,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 76,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 76,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 76,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 76,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 76,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 76,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 77,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 77,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 77,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 77,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 77,
+      "participant": 29,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 77,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 77,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 77,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 77,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 78,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 78,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 78,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 78,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 78,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 78,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 78,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 78,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 78,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 79,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 79,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 79,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 79,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 79,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 79,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 79,
+      "participant": 81,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 79,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 79,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 80,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 80,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 80,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 80,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 80,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 80,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 80,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 80,
+      "participant": 9,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 81,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 81,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 81,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 81,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 81,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 81,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 81,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 81,
+      "participant": 21,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 81,
+      "participant": 33,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 82,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 82,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 82,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 82,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 82,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 82,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 82,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 82,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 82,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 82,
+      "participant": 56,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 83,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 83,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 83,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 83,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 83,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 83,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 83,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 83,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 83,
+      "participant": 61,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 84,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 84,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 84,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 84,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 84,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 84,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 84,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 84,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 84,
+      "participant": 67,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 84,
+      "participant": 77,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 85,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 85,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 85,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 85,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 85,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 85,
+      "participant": 81,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 86,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 86,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 86,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 86,
+      "participant": 44,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 86,
+      "participant": 49,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 86,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 86,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 86,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 86,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 87,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 87,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 87,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 87,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 87,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 87,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 87,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 87,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 88,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 88,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 88,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 88,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 88,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 88,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 88,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 88,
+      "participant": 57,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 89,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 89,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 89,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 89,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 89,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 89,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 89,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 89,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 89,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 90,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 90,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 90,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 90,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 90,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 90,
+      "participant": 65,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 90,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 90,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 91,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 91,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 91,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 91,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 91,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 91,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 91,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 91,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 91,
+      "participant": 90,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 92,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 92,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 92,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 92,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 92,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 92,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 92,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 93,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 93,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 93,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 93,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 93,
+      "participant": 29,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 93,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 93,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 93,
+      "participant": 76,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 93,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 93,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 94,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 94,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 94,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 94,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 94,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 94,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 94,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 94,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 95,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 95,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 95,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 95,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 95,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 95,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 95,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 95,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 96,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 96,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 96,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 96,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 96,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 96,
+      "participant": 55,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 96,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 96,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 96,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 96,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 96,
+      "participant": 14,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 97,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 97,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 97,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 97,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 97,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 97,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 97,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 97,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 97,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 97,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 98,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 98,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 98,
+      "participant": 17,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 98,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 98,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 98,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 98,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 98,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 98,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 98,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 99,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 99,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 99,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 99,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 99,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 99,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 99,
+      "participant": 96,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 99,
+      "participant": 78,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 100,
+      "participant": 7,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 100,
+      "participant": 16,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 100,
+      "participant": 19,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 100,
+      "participant": 20,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 100,
+      "participant": 36,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 100,
+      "participant": 46,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 100,
+      "participant": 68,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 100,
+      "participant": 89,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 100,
+      "participant": 98,
+      "role": "IG",
+      "caught": false
+    },
+    {
+      "round": 100,
+      "participant": 95,
+      "role": "H",
+      "caught": true
+    },
+    {
+      "round": 100,
+      "participant": 8,
+      "role": "H",
+      "caught": true
+    }
+  ],
+  "hypothesis_validation": {
+    "continuous_ig_participation": true,
+    "regular_promotions": false,
+    "promotions_per_100_rounds": 0,
+    "h_maintained_profit": true,
+    "profit_ratio_reduced": true,
+    "actual_profit_ratio": 1.0,
+    "expected_profit_ratio_base": 58.75,
+    "h_avg_profit_per_round": 0.0013559039999999998,
+    "ig_avg_profit_per_round": 0.0013559039999999998,
+    "expected_h_profit_with_solution": 0.004624999999999999,
+    "byzantine_detection_rate": 0.08766859344894026,
+    "all_participants_active": false,
+    "hypothesis_confirmed": true
+  }
+}

@@ -213,12 +213,16 @@ class NashSimulation:
         
         # Create selection score combining reputation and fairness
         def selection_score(participant):
+            # Caught Byzantine participants cannot be selected
+            if participant.caught_byzantine:
+                return float('-inf')
+            
             # Higher reputation is better
             reputation_score = participant.reputation
             # Fewer rounds as H is better for fairness (negative rounds_as_h)
             fairness_score = -participant.rounds_as_h * 10  # Weight fairness more
-            # Penalty for known Byzantine (but they should still have a chance)
-            byzantine_penalty = -10 if participant.is_byzantine else 0
+            # Small penalty for active Byzantine (but they should still have a chance)
+            byzantine_penalty = -5 if (participant.is_byzantine and not participant.caught_byzantine) else 0
             
             return reputation_score + fairness_score + byzantine_penalty
         
@@ -626,24 +630,26 @@ class NashSimulation:
         h_reward_per_validator = h_base_reward / len(h_validators)  # Split among 3
         
         for h in h_validators:
-            if not (h.is_byzantine and not h.caught_byzantine):
+            if not h.caught_byzantine:  # Only non-caught participants earn
                 h.add_earnings(h_reward_per_validator)
-                h.balance -= self.params['h_cost_honest']
-            else:
-                # Byzantine H pays higher cost
-                h.balance -= self.params['h_cost_malicious']
+                # Pay cost based on behavior
+                if h.is_byzantine:
+                    h.balance -= self.params['h_cost_malicious']
+                else:
+                    h.balance -= self.params['h_cost_honest']
+            # Caught Byzantine H validators earn nothing and pay nothing (stake already lost)
         
         # All IG participants (non-H this round) get base IG reward
         ig_participants = [p for p in self.participants if p.current_round_role == "IG"]
         
         for ig in ig_participants:
-            if not (ig.is_byzantine and not ig.caught_byzantine):
-                # Honest IGs get base profit
+            if not ig.caught_byzantine:  # Only non-caught participants earn
+                # Honest IGs and uncaught Byzantine IGs get base profit
                 ig.add_earnings(self.params['expected_ig_profit'])
-                # Pay voting cost
-                ig.balance -= self.params['ig_cost_honest']
-                # Get reputation
-                ig.reputation += self.params['reputation_reward']
+                # Pay voting cost (already paid in voting phase)
+                # ig.balance -= self.params['ig_cost_honest']  # Already paid
+                # Get reputation (already awarded in voting phase)
+                # ig.reputation += self.params['reputation_reward']  # Already awarded
     
     def _check_promotions(self):
         """No longer needed with temporary role system"""
@@ -667,10 +673,9 @@ class NashSimulation:
             'n_ig': len(current_ig),  # Should be 97
             'avg_h_balance': sum(p.balance for p in current_h) / len(current_h) if current_h else 0,
             'avg_ig_balance': sum(p.balance for p in current_ig) / len(current_ig) if current_ig else 0,
-            'avg_h_earnings': sum(p.total_earnings for p in self.participants) / len(self.participants),  # All participants can be H
-            'avg_ig_earnings': sum(p.total_earnings for p in self.participants) / len(self.participants),  # Same baseline
+            'avg_h_earnings': sum(p.total_earnings for p in current_h) / len(current_h) if current_h else 0,  # Earnings of current H validators
+            'avg_ig_earnings': sum(p.total_earnings for p in current_ig) / len(current_ig) if current_ig else 0,  # Earnings of current IG participants
             'max_reputation': max((p.reputation for p in self.participants), default=0),
-            'n_eligible_for_promotion': 0,  # No longer relevant
             'n_byzantine_active': len([p for p in self.participants if p.is_byzantine and not p.caught_byzantine]),
             'llm_calls': self.llm_calls
         }
